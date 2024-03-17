@@ -67,15 +67,15 @@ modkey = "Mod4"
 awful.layout.layouts = {
     -- awful.layout.suit.floating, 
     awful.layout.suit.tile,
-    awful.layout.suit.tile.left,
-    awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.top,
+    -- awful.layout.suit.tile.left,
+    -- awful.layout.suit.tile.bottom,
+    -- awful.layout.suit.tile.top,
     awful.layout.suit.fair,
-    awful.layout.suit.fair.horizontal,
+    -- awful.layout.suit.fair.horizontal,
     -- awful.layout.suit.spiral,
     -- awful.layout.suit.spiral.dwindle,
     -- awful.layout.suit.max,
-    -- awful.layout.suit.max.fullscreen,
+    awful.layout.suit.max.fullscreen,
     -- awful.layout.suit.magnifier,
     -- awful.layout.suit.corner.nw,
     -- awful.layout.suit.corner.ne,
@@ -192,7 +192,7 @@ awful.screen.connect_for_each_screen(function(s)
     -- Each screen has its own tag table.
     local names = { "1-Dev", "2-Note", "3-Browse", "4-Draw", "5-PDF", "6", "7", "8", "9" }
     local l = awful.layout.suit  -- Just to save some typing: use an alias.
-    local layouts = { l.tile, l.tile.left, l.tile.bottom, l.tile.top, l.fair, l.fair.horizontal }
+    local layouts = { l.tile, l.fair, l.max.fullscreen }
     awful.tag(names, s, layouts)
 
     -- Create a promptbox for each screen
@@ -596,5 +596,15 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- awful.spawn.with_shell("firefox")
 -- awful.spawn.with_shell("krita")
 -- awful.spawn.with_shell("zathura")
---
 
+-- Remove borders when fullscreen
+-- client.connect_signal("property::fullscreen", function (c)
+-- c.border_width = c.fullscreen and 0 or beautiful.border_width
+-- end)
+
+-- Fixing the inconsistent fullscreen borders
+client.connect_signal("property::size", function(c)
+    if not c.maximized and not client.fullscreen then
+        c.border_width = beautiful.border_width
+    end
+end)
