@@ -9,8 +9,8 @@ local theme = {}
 
 theme.font          = "jetbrainsmono 8"
 
-theme.bg_normal     = "#292e42"
-theme.bg_focus      = "#3b4261"
+theme.bg_normal     = "#1a1b26"
+theme.bg_focus      = "#292e42"
 theme.bg_urgent     = "#ff0000"
 theme.bg_minimize   = "#666666"
 theme.bg_systray    = theme.bg_normal
