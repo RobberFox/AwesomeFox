@@ -1,19 +1,17 @@
 -- If LuaRocks is installed, make sure that packages installed through it are found (e.g. lgi)
 pcall(require, "luarocks.loader")
-
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
-require("awful.autofocus")
 -- Widget and layout library
 local wibox = require("wibox")
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
-local hotkeys_popup = require("awful.hotkeys_popup")
+-- local hotkeys_popup = require("awful.hotkeys_popup")
 
-require("awful.autofocus")
-require("awful.hotkeys_popup.keys")
+-- require("awful.autofocus")
+-- require("awful.hotkeys_popup.keys")
 
 local beautiful = require("beautiful") -- Theme handling library
 beautiful.init("/home/robert/.config/awesome/theme.lua")
@@ -47,7 +45,6 @@ if awesome.startup_errors then
 	title = "Oops, there were errors during startup!",
 	text = awesome.startup_errors })
 end
-
 -- Handle runtime errors after startup
 do
 	local in_error = false

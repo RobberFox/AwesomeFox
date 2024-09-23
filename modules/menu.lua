@@ -1,14 +1,15 @@
 local awful = require("awful")
+local wibox = require("wibox")
 require("awful.autofocus")
 local beautiful = require("beautiful")
 local menubar = require("menubar")
-local hotkeys_popup = require("awful.hotkeys_popup")
 -- Load Debian menu entries
 local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
 
 -- Create a launcher widget and a main menu
 
+-- TODO: create a separate module for all the user variables.
 terminal = "kitty"
 editor = os.getenv("EDITOR") or "nvim"
 editor_cmd = terminal .. " -e " .. editor
