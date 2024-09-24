@@ -7,6 +7,8 @@ awful.spawn.once("firefox", { rule = { class = "Firefox" }, properties = { scree
 awful.spawn.once("krita", { rule = { class = "krita" }, properties = { screen = 1, fullscreen = false, tag = "4-Drw" } })
 awful.spawn.once("zathura", { rule = { name = "zathura" }, properties = { screen = 1, fullscreen = false, tag = "5-Pdf" } })
 
+awful.spawn("/home/robert/script/amixer.sh")
+
 -- local function run_once(cmd)
 --   local findme = cmd
 --   local firstspace = cmd:find(' ')
