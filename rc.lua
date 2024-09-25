@@ -30,14 +30,14 @@ client.connect_signal("property::size", function(c)
 	end
 end)
 
+require("configuration.layout")
 require("configuration.rule")
 require("configuration.key")
-require("configuration.layout")
 require("configuration.signal")
 
-require("modules.auto-start")
 require("modules.wibar")
 require("modules.menu")
+require("modules.auto-start")
 
 -- Error handling
 if awesome.startup_errors then

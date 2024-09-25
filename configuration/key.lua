@@ -7,6 +7,7 @@ require('awful.autofocus')
 local hotkeys_popup = require('awful.hotkeys_popup').widget
 
 modkey = "Mod4"
+altkey = "Mod1"
 
 globalkeys = gears.table.join( awful.key({ modkey, }, "s", hotkeys_popup.show_help, {description="show help", group="awesome"}),
 awful.key({ modkey, }, "Left", awful.tag.viewprev, {description = "view previous", group = "tag"}),
@@ -32,7 +33,7 @@ end, {description = "go back", group = "client"}),
 
 -- Standard program
 awful.key({ modkey, }, "Return", function () awful.spawn(terminal) end, {description = "open a terminal", group = "launcher"}),
-awful.key({ modkey, "Control" }, "r", awesome.restart, {description = "reload awesome", group = "awesome"}),
+awful.key({ modkey, "Shift" }, "r", awesome.restart, {description = "reload awesome", group = "awesome"}),
 awful.key({ modkey, "Shift" }, "q", awesome.quit, {description = "quit awesome", group = "awesome"}),
 
 awful.key({ modkey, }, "l", function () awful.tag.incmwfact( 0.05) end, {description = "increase master width factor", group = "layout"}),
@@ -67,7 +68,12 @@ end, {description = "lua execute prompt", group = "awesome"}),
 awful.key({ modkey }, "p", function() menubar.show() end, {description = "show the menubar", group = "launcher"}),
 
 -- My own bindings
-awful.key({ modkey }, "a", function() awful.spawn.with_shell("flameshot gui") end, {description = "run flameshot", group = "robberfox"})
+awful.key({ modkey }, "a", function() awful.spawn.with_shell("flameshot gui") end, {description = "run flameshot", group = "robberfox"}),
+awful.key({ modkey }, "z", function()
+	for s in screen do
+		s.mywibox.visible = not s.mywibox.visible
+	end
+end, {description = "hide wibar", group = "robberfox"})
 )
 
 clientkeys = gears.table.join(
@@ -107,6 +113,7 @@ for i = 1, 9 do
 		local tag = screen.tags[i]
 		if tag then
 			tag:view_only()
+			client.focus = awful.client.getmaster()
 		end
 	end, {description = "view tag #"..i, group = "tag"}),
 	-- Toggle tag display.
@@ -127,7 +134,7 @@ for i = 1, 9 do
 		end
 	end, {description = "move focused client to tag #"..i, group = "tag"}),
 	-- Toggle tag on focused client.
-	awful.key({ modkey, "Control", "Shift" }, "#" .. i + 9, function ()
+	awful.key({ modkey, altkey }, "#" .. i + 9, function ()
 		if client.focus then
 			local tag = client.focus.screen.tags[i]
 			if tag then

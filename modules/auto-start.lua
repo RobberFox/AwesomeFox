@@ -1,11 +1,11 @@
 local awful = require("awful")
 -- local autostart = require('configuration.autostart')
 
-awful.spawn.once("env GLFW_IM_MODULE=ibus /home/robert/.local/kitty.app/bin/kitty", { rule = { name = "kitty" }, properties = { screen = 1, fullscreen = false, tag = "1-Dev" } })
-awful.spawn.once("obsidian", { rule = { instance = "obsidian" }, properties = { screen = 1, fullscreen = false, tag = "2-Obs" } })
-awful.spawn.once("firefox", { rule = { class = "Firefox" }, properties = { screen = 1, fullscreen = false, tag = "3-Ffx" } })
-awful.spawn.once("krita", { rule = { class = "krita" }, properties = { screen = 1, fullscreen = false, tag = "4-Drw" } })
-awful.spawn.once("zathura", { rule = { name = "zathura" }, properties = { screen = 1, fullscreen = false, tag = "5-Pdf" } })
+awful.spawn.once("env GLFW_IM_MODULE=ibus /home/robert/.local/kitty.app/bin/kitty", {})
+awful.spawn.once("/usr/bin/obsidian", {})
+awful.spawn.once("firefox", {})
+awful.spawn.once("krita", {})
+awful.spawn.once("zathura", {})
 
 awful.spawn("/home/robert/script/amixer.sh")
 
