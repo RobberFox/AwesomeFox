@@ -7,7 +7,9 @@ awful.spawn.once("firefox", {})
 awful.spawn.once("krita", {})
 awful.spawn.once("zathura", {})
 
+-- Scripts
 awful.spawn("/home/robert/script/amixer.sh")
+awful.spawn("/home/robert/script/sensitivity.sh")
 
 -- local function run_once(cmd)
 --   local findme = cmd

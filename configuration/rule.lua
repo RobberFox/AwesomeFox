@@ -69,4 +69,15 @@ awful.rules.rules = {
 	{ rule = { class = "Firefox" }, properties = { screen = 1, urgent = false, tag = "3-Ffx" } },
 	{ rule = { class = "krita" }, properties = { screen = 1, urgent = false, tag = "4-Drw" } },
 	{ rule = { name = "zathura" }, properties = { screen = 1, urgent = false, tag = "5-Pdf" } },
+
+	{
+		rule_any = { class = { "Steam" } },
+		properties = {
+			titlebars_enabled = false,
+			floating = true,
+			border_width = 0,
+			border_color = 0,
+			size_hints_honor = false,
+		},
+	},
 }
