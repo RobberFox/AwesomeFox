@@ -1,4 +1,5 @@
 require("configuration.key")
+require("configuration.layout")
 
 local gears = require("gears")
 local awful = require("awful")
@@ -72,9 +73,7 @@ awful.screen.connect_for_each_screen(function(s)
 
 	-- Each screen has its own tag table.
 	local names = { "1-Dev", "2-Obs", "3-Ffx", "4-Drw", "5-Pdf", "6", "7", "8", "9" }
-	local l = awful.layout.suit -- Just to save some typing: use an alias.
-	local layouts = { l.tile, l.fair, l.max.fullscreen }
-	awful.tag(names, s, layouts)
+	awful.tag(names, s, awful.layout.layouts[1])
 
 	-- Create a promptbox for each screen
 	s.mypromptbox = awful.widget.prompt()

@@ -2,7 +2,7 @@ local awful = require("awful")
 -- local autostart = require('configuration.autostart')
 
 awful.spawn.once("env GLFW_IM_MODULE=ibus /home/robert/.local/kitty.app/bin/kitty", {})
-awful.spawn.once("/usr/bin/obsidian", {})
+awful.spawn.once("obsidian", {})
 awful.spawn.once("firefox", {})
 awful.spawn.once("krita", {})
 awful.spawn.once("zathura", {})
