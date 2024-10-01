@@ -6,8 +6,44 @@ local awful = require("awful")
 require("awful.autofocus")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
+
+awesome.set_preferred_icon_size (64)
+
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+mytextclock = wibox.widget {
+	format = " %a %b %d > %H:%M ",
+	widget = wibox.widget.textclock,
+	font =  "jetbrainsmono bold 12"
+}
+-- Battery widget
+
+local function battery()
+	local info, file
+
+	file = io.popen("acpi -b | cut -c 25-27")
+	info = file:read("*all")
+	file:close()
+
+	return " " .. info .. " "
+end
+
+gears.timer {
+    timeout   = 60,
+    call_now  = true,
+    autostart = true,
+    callback  = function()
+    end
+}
+
+mybattery = wibox.widget {
+	text = battery(),
+	widget = wibox.widget.textbox,
+}
+
+-- System tray
+local xresources = require("beautiful.xresources")
+local dpi = xresources.apply_dpi
+beautiful.systray_icon_spacing = dpi(4)
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -64,8 +100,6 @@ end
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
-awesome.set_preferred_icon_size (64)
-
 mykeyboardlayout = awful.widget.keyboardlayout()
 
 awful.screen.connect_for_each_screen(function(s)
@@ -96,11 +130,11 @@ awful.screen.connect_for_each_screen(function(s)
 	s.mytasklist = awful.widget.tasklist {
 		screen = s,
 		filter = awful.widget.tasklist.filter.currenttags,
-		buttons = tasklist_buttons
+		buttons = tasklist_buttons,
 	}
 
 	-- Create the wibox
-	s.mywibox = awful.wibar({ position = "top", screen = s })
+	s.mywibox = awful.wibar({ position = "top", screen = s, height = 24 })
 
 	-- Add widgets to the wibox
 	s.mywibox:setup {
@@ -114,9 +148,10 @@ awful.screen.connect_for_each_screen(function(s)
 		},
 		s.mytasklist, -- Middle widget
 		{ -- Right widgets
-			layout = wibox.layout.fixed.horizontal,
-			wibox.widget.systray(),
+			mybattery,
+			wibox.layout.margin(wibox.widget.systray(), 2, 2, 2, 2),
 			mytextclock,
+			layout = wibox.layout.fixed.horizontal,
 			s.mylayoutbox,
 		},
 	}

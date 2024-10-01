@@ -73,7 +73,15 @@ awful.key({ modkey }, "z", function()
 	for s in screen do
 		s.mywibox.visible = not s.mywibox.visible
 	end
-end, {description = "hide wibar", group = "robberfox"})
+end, {description = "hide wibar", group = "robberfox"}),
+
+-- Laptop
+awful.key({}, "#121", function () awful.util.spawn("amixer -D pulse sset Master toggle", false) end),
+awful.key({}, "#122", function () awful.util.spawn("amixer -D pulse sset Master 5%-") end),
+awful.key({}, "#123", function () awful.util.spawn("amixer -D pulse sset Master 5%+") end),
+
+awful.key({ }, "#232", function () awful.util.spawn("/home/robert/script/backlight.sh") end),
+awful.key({ }, "#233", function () awful.util.spawn("/home/robert/script/backlight.sh +") end)
 )
 
 clientkeys = gears.table.join(
@@ -106,7 +114,7 @@ end , {description = "(un)maximize horizontally", group = "client"})
 -- Be careful: we use keycodes to make it work on any keyboard layout.
 -- This should map on the top row of your keyboard, usually 1 to 9.
 for i = 1, 9 do
-	globalkeys = gears.table.join(globalkeys,
+	globalkeys = gears.table.join(globalkeys, -- appending new keys
 	-- View tag only.
 	awful.key({ modkey }, "#" .. i + 9, function ()
 		local screen = awful.screen.focused()
@@ -160,4 +168,6 @@ awful.button({ }, 3, function () mymainmenu:toggle() end),
 awful.button({ }, 4, awful.tag.viewnext),
 awful.button({ }, 5, awful.tag.viewprev)
 ))
+
+-- Laptop
 
