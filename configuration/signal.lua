@@ -18,9 +18,9 @@ client.connect_signal("manage", function (c)
 end)
 
 -- Enable sloppy focus, so that focus follows mouse.
-client.connect_signal("mouse::enter", function(c)
-	c:emit_signal("request::activate", "mouse_enter", {raise = false})
-end)
+-- client.connect_signal("mouse::enter", function(c)
+-- 	c:emit_signal("request::activate", "mouse_enter", {raise = false})
+-- end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
@@ -37,3 +37,16 @@ end)
 -- 		c.border_width = beautiful.border_width
 -- 	end
 -- end)
+
+-- Focus urgent windows
+client.connect_signal("property::urgent", function(c)
+    c.minimized = false
+    c:jump_to()
+end)
+
+-- Fixing the inconsistent fullscreen borders
+client.connect_signal("property::size", function(c)
+	if not c.maximized and not client.fullscreen then
+		c.border_width = beautiful.border_width
+	end
+end)

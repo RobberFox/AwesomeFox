@@ -67,7 +67,7 @@ awful.rules.rules = {
 
 	{ rule = { class = "kitty" }, properties = { screen = 1, urgent = false, tag = "1-Dev" } },
 	{ rule = { class = "obsidian" }, properties = { screen = 1, urgent = false, tag = "2-Obs" } },
-	{ rule = { class = "Firefox-esr" }, properties = { screen = 1, urgent = false, maximized = false, layout = awful.layout.layouts[3], tag = "3-Ffx" } },
+	{ rule = { class = "Firefox-esr" }, properties = { screen = 1, urgent = false, maximized = false, tag = "3-Ffx" } },
 	{ rule = { class = "krita" }, properties = { screen = 1, urgent = false, maximized = false, tag = "4-Drw" } },
 	{ rule = { class = "Zathura" }, properties = { screen = 1, urgent = false, tag = "5-Pdf" } },
 

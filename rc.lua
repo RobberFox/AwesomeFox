@@ -17,18 +17,6 @@ local beautiful = require("beautiful") -- Theme handling library
 beautiful.init("/home/robert/.config/awesome/theme.lua")
 beautiful.maximized_hide_border = true
 
--- Focus urgent windows
-client.connect_signal("property::urgent", function(c)
-    c.minimized = false
-    c:jump_to()
-end)
-
--- Fixing the inconsistent fullscreen borders
-client.connect_signal("property::size", function(c)
-	if not c.maximized and not client.fullscreen then
-		c.border_width = beautiful.border_width
-	end
-end)
 
 require("configuration.layout")
 require("configuration.rule")

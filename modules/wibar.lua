@@ -123,8 +123,10 @@ awful.screen.connect_for_each_screen(function(s)
 	s.mytaglist = awful.widget.taglist {
 		screen = s,
 		filter = awful.widget.taglist.filter.all,
-		buttons = taglist_buttons
+		buttons = taglist_buttons,
 	}
+	-- local shape = gears.shape.circle
+	-- beautiful.taglist_shape = shape
 
 	-- Create a tasklist widget
 	s.mytasklist = awful.widget.tasklist {
@@ -138,7 +140,8 @@ awful.screen.connect_for_each_screen(function(s)
 
 	-- Add widgets to the wibox
 	s.mywibox:setup {
-		layout = wibox.layout.align.horizontal,
+		layout = wibox.layout.align.horizontal, -- it's not the windows layout, it's the wibox layout!
+
 		{ -- Left widgets
 			layout = wibox.layout.fixed.horizontal,
 			-- mylauncher,
