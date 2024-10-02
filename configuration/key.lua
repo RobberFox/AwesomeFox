@@ -80,8 +80,8 @@ awful.key({}, "#121", function () awful.util.spawn("amixer -D pulse sset Master 
 awful.key({}, "#122", function () awful.util.spawn("amixer -D pulse sset Master 5%-") end),
 awful.key({}, "#123", function () awful.util.spawn("amixer -D pulse sset Master 5%+") end),
 
-awful.key({ }, "#232", function () awful.util.spawn("/home/robert/script/backlight.sh") end),
-awful.key({ }, "#233", function () awful.util.spawn("/home/robert/script/backlight.sh +") end)
+awful.key({ modkey }, "[", function () awful.util.spawn("/home/robert/script/backlight.sh") end),
+awful.key({ modkey }, "]", function () awful.util.spawn("/home/robert/script/backlight.sh +") end)
 )
 
 clientkeys = gears.table.join(
