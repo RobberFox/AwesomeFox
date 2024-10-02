@@ -20,7 +20,7 @@ mytextclock = wibox.widget {
 local function battery()
 	local info, file
 
-	file = io.popen("acpi -b | cut -c 25-27")
+	file = io.popen("acpi -b | cut -d ',' -f 2")
 	info = file:read("*all")
 	file:close()
 
