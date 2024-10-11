@@ -1,6 +1,9 @@
 local awful = require("awful")
 -- local autostart = require('configuration.autostart')
 
+local gfs = require("gears.filesystem")
+local config_path = gfs.get_configuration_dir()
+
 awful.spawn.once("env GLFW_IM_MODULE=ibus /home/robert/.local/kitty.app/bin/kitty", {})
 awful.spawn.once("obsidian", {})
 awful.spawn.once("firefox", {})
@@ -8,8 +11,8 @@ awful.spawn.once("krita", {})
 awful.spawn.once("zathura", {})
 
 -- Scripts
-awful.spawn("/home/robert/script/amixer.sh")
-awful.spawn("/home/robert/script/sensitivity.sh")
+awful.spawn(config_path.."/script/amixer.sh")
+awful.spawn(config_path.."/script/sensitivity.sh")
 
 -- local function run_once(cmd)
 --   local findme = cmd

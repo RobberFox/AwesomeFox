@@ -9,6 +9,9 @@ local hotkeys_popup = require('awful.hotkeys_popup').widget
 modkey = "Mod4"
 altkey = "Mod1"
 
+local gfs = require("gears.filesystem")
+local config_path = gfs.get_configuration_dir()
+
 globalkeys = gears.table.join( awful.key({ modkey, }, "s", hotkeys_popup.show_help, {description="show help", group="awesome"}),
 awful.key({ modkey, }, "Left", awful.tag.viewprev, {description = "view previous", group = "tag"}),
 awful.key({ modkey, }, "Right", awful.tag.viewnext, {description = "view next", group = "tag"}),
@@ -76,12 +79,12 @@ awful.key({ modkey }, "z", function()
 end, {description = "hide wibar", group = "robberfox"}),
 
 -- Laptop
-awful.key({}, "#121", function () awful.util.spawn("amixer -D pulse sset Master toggle", false) end),
-awful.key({}, "#122", function () awful.util.spawn("amixer -D pulse sset Master 5%-") end),
-awful.key({}, "#123", function () awful.util.spawn("amixer -D pulse sset Master 5%+") end),
+awful.key({}, "#121", function () awful.util.spawn("amixer set Master toggle", false) end),
+awful.key({}, "#122", function () awful.util.spawn("amixer set Master 5%-") end),
+awful.key({}, "#123", function () awful.util.spawn("amixer set Master 5%+") end),
 
-awful.key({ modkey }, "[", function () awful.util.spawn("/home/robert/script/backlight.sh") end),
-awful.key({ modkey }, "]", function () awful.util.spawn("/home/robert/script/backlight.sh +") end)
+awful.key({ modkey }, "[", function () awful.util.spawn(config_path.."script/backlight.sh") end),
+awful.key({ modkey }, "]", function () awful.util.spawn(config_path.."script/backlight.sh +") end)
 )
 
 clientkeys = gears.table.join(
