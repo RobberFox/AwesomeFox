@@ -1,7 +1,6 @@
 local awful = require("awful")
 
--- Table of layouts to cover with awful.layout.inc, order matters.
-awful.layout.layouts = {
+local _M = {
 	-- awful.layout.suit.floating,
 	awful.layout.suit.tile,
 	-- awful.layout.suit.tile.left,
@@ -19,3 +18,5 @@ awful.layout.layouts = {
 	-- awful.layout.suit.corner.sw,
 	-- awful.layout.suit.corner.se,
 }
+
+return _M

@@ -1,9 +1,16 @@
+local gears = require("gears")
+local beautiful = require("beautiful")
 
+local _M = {
+	config_path = gears.filesystem.get_configuration_dir(),
+	themes_path = gears.filesystem.get_themes_dir(),
 
+	dpi = beautiful.xresources.apply_dpi,
 
+	terminal = "kitty",
 
-terminal = "kitty"
-editor = os.getenv("EDITOR") or "nvim"
-editor_cmd = terminal .. " -e " .. editor
+	modkey = "Mod4",
+	altkey = "Mod1",
+}
 
-return _
+return _M
