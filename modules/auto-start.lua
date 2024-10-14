@@ -1,8 +1,7 @@
 local awful = require("awful")
--- local autostart = require('configuration.autostart')
+local vars = require("main.user-variable")
 
-local gfs = require("gears.filesystem")
-local config_path = gfs.get_configuration_dir()
+local config_path = vars.config_path
 
 awful.spawn.once("env GLFW_IM_MODULE=ibus /home/robert/.local/kitty.app/bin/kitty", {})
 awful.spawn.once("obsidian", {})

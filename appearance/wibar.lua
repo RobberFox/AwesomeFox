@@ -1,9 +1,7 @@
-require("configuration.key")
-require("configuration.layout")
+require("key.globalkey")
 
 local gears = require("gears")
 local awful = require("awful")
-require("awful.autofocus")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 
@@ -41,8 +39,8 @@ mybattery = wibox.widget {
 }
 
 -- System tray
-local xresources = require("beautiful.xresources")
-local dpi = xresources.apply_dpi
+local vars = require("main.user-variable")
+local dpi = vars.dpi
 beautiful.systray_icon_spacing = dpi(4)
 
 -- Create a wibox for each screen and add it
@@ -114,16 +112,10 @@ awful.screen.connect_for_each_screen(function(s)
 	-- Create an imagebox widget which will contain an icon indicating which layout we're using.
 	-- We need one layoutbox per screen.
 	s.mylayoutbox = awful.widget.layoutbox(s)
-	s.mylayoutbox:buttons(gears.table.join(
-	awful.button({ }, 1, function () awful.layout.inc( 1) end),
-	awful.button({ }, 3, function () awful.layout.inc(-1) end),
-	awful.button({ }, 4, function () awful.layout.inc( 1) end),
-	awful.button({ }, 5, function () awful.layout.inc(-1) end)))
 	-- Create a taglist widget
 	s.mytaglist = awful.widget.taglist {
 		screen = s,
 		filter = awful.widget.taglist.filter.all,
-		buttons = taglist_buttons,
 	}
 	-- local shape = gears.shape.circle
 	-- beautiful.taglist_shape = shape
