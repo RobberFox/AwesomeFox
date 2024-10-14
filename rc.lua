@@ -1,49 +1,47 @@
--- If LuaRocks is installed, make sure that packages installed through it are found (e.g. lgi)
 pcall(require, "luarocks.loader")
+
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
--- Widget and layout library
-local wibox = require("wibox")
--- Notification library
-local naughty = require("naughty")
-local menubar = require("menubar")
--- local hotkeys_popup = require("awful.hotkeys_popup")
-
--- require("awful.autofocus")
--- require("awful.hotkeys_popup.keys")
 
 local beautiful = require("beautiful") -- Theme handling library
-beautiful.init("/home/robert/.config/awesome/theme.lua")
-beautiful.maximized_hide_border = true
+
+local wibox = require("wibox") -- Widget and layout library
+local naughty = require("naughty") -- Notification library
+local menubar = require("menubar") -- Misc library
+
+RC = {} -- global namespace (created before `require` of modules)
+RC.vars = require("main.user-variable")
+-- modkey = RC.vars.modkeys
+
+require("main.error")
+require("appearance.wibar")
+require("main.signal")
+require("module.auto-start")
+
+beautiful.init(gears.filesystem.get_configuration_dir() .. ".config/awesome/theme.lua")
+beautiful.wallpaper = RC.vars.wallpapaper
+-- beautiful.maximized_hide_border = true
+
+-- Custom local library
+local main = {
+	layouts = require("main.layout"),
+	tags = require("main.tag"),
+	rule = require("main.rule"),
+}
+
+-- Custom local library: keybindings
+local binding = {
+	globalkeys = require("key.global"),
+	generalkeys = require("key.general"),
+}
 
 
-require("configuration.layout")
-require("configuration.rule")
-require("configuration.key")
-require("configuration.signal")
 
-require("modules.wibar")
-require("modules.menu")
-require("modules.auto-start")
+-- NOTE: SKELETON OF THE CONFIG
 
--- Error handling
-if awesome.startup_errors then
-	naughty.notify({ preset = naughty.config.presets.critical,
-	title = "Oops, there were errors during startup!",
-	text = awesome.startup_errors })
-end
--- Handle runtime errors after startup
-do
-	local in_error = false
-	awesome.connect_signal("debug::error", function (err)
-		-- Make sure we don't go into an endless error loop
-		if in_error then return end
-		in_error = true
+RC.layouts = main.layouts()
+RC.tags = main.tags()
 
-		naughty.notify({ preset = naughty.config.presets.critical,
-		title = "Oops, an error happened!",
-		text = tostring(err) })
-		in_error = false
-	end)
-end
+RC.globalkeys = binding.globalkeys
+
