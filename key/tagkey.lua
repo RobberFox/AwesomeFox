@@ -18,7 +18,7 @@ for i = 1, 9 do
 			tag:view_only()
 			client.focus = awful.client.getmaster()
 		end
-	end, {description = "view tag #"..i, group = "numerated"}),
+	end, {description = "view tag #" .. i, group = "numerated"}),
 
 	-- Toggle tag display.
 	awful.key({ modkey, "Control" }, "#" .. i + 9, function ()

@@ -2,8 +2,9 @@ local awful = require("awful")
 local vars = require("main.user-variable")
 
 local config_path = vars.config_path
+local home_path = vars.home_path
 
-awful.spawn.once("env GLFW_IM_MODULE=ibus /home/robert/.local/kitty.app/bin/kitty", {})
+awful.spawn.once("env GLFW_IM_MODULE=ibus "..home_path.."/.local/kitty.app/bin/kitty", {})
 awful.spawn.once("obsidian", {})
 awful.spawn.once("firefox", {})
 awful.spawn.once("krita", {})

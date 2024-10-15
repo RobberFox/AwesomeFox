@@ -12,7 +12,7 @@ local function battery()
 	info = file:read("*all")
 	file:close()
 
-	return " " .. info .. " "
+	return " "..info.." "
 end
 
 -- System tray stuff

@@ -4,6 +4,7 @@ local beautiful = require("beautiful")
 local _M = {
 	config_path = gears.filesystem.get_configuration_dir(),
 	themes_path = gears.filesystem.get_themes_dir(),
+	home_path = os.getenv("HOME"),
 
 	dpi = beautiful.xresources.apply_dpi,
 
