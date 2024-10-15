@@ -19,22 +19,36 @@ end
 local dpi = vars.dpi
 beautiful.systray_icon_spacing = dpi(4)
 
-awful.screen.connect_for_each_screen(function(s)
-	s.mytextclock = wibox.widget {
+-- NOTE: Widgets library
+
+local widgets = {}
+
+function widgets.mytextclock(s)
+	return wibox.widget {
 		format = " %a %b %d > %H:%M ",
 		font =  "jetbrainsmono bold 12",
 
 		widget = wibox.widget.textclock,
 		screen = s,
 	}
+end
 
-	s.mybattery = wibox.widget {
+function widgets.mybattery(s)
+	return wibox.widget {
 		text = battery(),
 
 		widget = wibox.widget.textbox,
 		screen = s,
 	}
+end
 
-	s.mysystray = wibox.widget.systray()
-	s.mylayoutbox = awful.widget.layoutbox(s)
-end)
+function widgets.mysystray(s)
+	return wibox.widget {
+		-- WIP wibox.container.margin(appearance.mytraywidgets.mysystray(s), 2, 2, 2, 2),
+
+		widget = wibox.widget.systray,
+		screen = s,
+	}
+end
+
+return widgets

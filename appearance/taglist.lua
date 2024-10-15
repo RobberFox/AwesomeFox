@@ -22,10 +22,13 @@ awful.button({ }, 4, function(t) awful.tag.viewnext(t.screen) end),
 awful.button({ }, 5, function(t) awful.tag.viewprev(t.screen) end)
 )
 
-awful.screen.connect_for_each_screen(function(s)
-	s.mytaglist = awful.widget.taglist {
-		screen = s,
+local function taglist(s)
+	return awful.widget.taglist {
 		filter = awful.widget.taglist.filter.all,
 		buttons = taglist_buttons,
+
+		screen = s,
 	}
-end)
+end
+
+return taglist

@@ -4,8 +4,9 @@ local vars = require("main.user-variable")
 local config_path = vars.config_path
 local home_path = vars.home_path
 
+-- Try to use combination of `.once` or `.with_shell` and see what sticks
 awful.spawn.once("env GLFW_IM_MODULE=ibus "..home_path.."/.local/kitty.app/bin/kitty", {})
-awful.spawn.once("obsidian", {})
+awful.spawn.with_shell("pidof obsidian || obsidian") -- because obsidian is an exception
 awful.spawn.once("firefox", {})
 awful.spawn.once("krita", {})
 awful.spawn.once("zathura", {})
@@ -13,17 +14,3 @@ awful.spawn.once("zathura", {})
 -- Scripts
 awful.spawn(config_path.."/script/amixer.sh")
 awful.spawn(config_path.."/script/sensitivity.sh")
-
--- local function run_once(cmd)
---   local findme = cmd
---   local firstspace = cmd:find(' ')
---   if firstspace then
---     findme = cmd:sub(0, firstspace - 1)
---   end
---   awful.spawn.with_shell(string.format('pgrep -u $USER -x %s > /dev/null || (%s)', findme, cmd))
--- end
---
--- for _, app in ipairs(autostart.run_on_start_up) do
---   run_once(app)
--- end
-

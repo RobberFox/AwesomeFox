@@ -16,8 +16,8 @@ for i = 1, 9 do
 		local tag = screen.tags[i]
 		if tag then
 			tag:view_only()
-			client.focus = awful.client.getmaster()
 		end
+		client.focus = awful.client.getmaster()
 	end, {description = "view tag #" .. i, group = "numerated"}),
 
 	-- Toggle tag display.

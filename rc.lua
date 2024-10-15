@@ -27,8 +27,9 @@ local globalkeys = require("key.globalkey")
 local globalbuttons = require("key.globalbuttons")
 
 require("appearance.wibar")
-require("module.auto-start")
 
 -- Set keys
 root.keys(globalkeys)
 root.buttons(globalbuttons)
+
+require("module.auto-start")

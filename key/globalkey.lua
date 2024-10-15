@@ -11,6 +11,31 @@ local modkey = vars.modkey
 
 local tagkey = require("key.tagkey")
 
+-- TODO: Extract into a separate file
+local function shell_run()
+	awful.prompt.run {
+		prompt = "Lua: ",
+		textbox = awful.screen.focused().mypromptbox.widget, -- I don't need to require `wibar.lua` since keys are set only after wibar
+		exe_callback = awful.util.eval,
+		history_path = awful.util.get_cache_dir() .. "/history_eval"
+	}
+end
+
+local function spawn_here(cmd)
+    awful.spawn(cmd, {
+        tag = mouse.screen.selected_tag,
+    })
+end
+
+
+-- menubar.prompt_args {
+-- 	exe_callback = spawn_here()
+-- }
+
+local function menubar_run()
+	menubar.show()
+end
+
 local globalkeys = gears.table.join(tagkey,
 awful.key({ modkey, }, "s", hotkeys_popup.show_help, {description="show help", group="awesome"}),
 awful.key({ modkey, "Shift" }, "r", awesome.restart, {description = "reload awesome", group = "awesome"}),
@@ -60,20 +85,11 @@ awful.key({ modkey, "Shift" }, "l", function () awful.tag.incnmaster(-1, nil, tr
 awful.key({ modkey, "Control" }, "h", function () awful.tag.incncol( 1, nil, true) end, {description = "increase the number of columns", group = "2 window - increment"}),
 awful.key({ modkey, "Control" }, "l", function () awful.tag.incncol(-1, nil, true) end, {description = "decrease the number of columns", group = "2 window - increment"}),
 
--- Standard program
-awful.key({ modkey, }, "Return", function () awful.spawn(terminal) end, {description = "open a terminal", group = "5 run"}),
-awful.key({ modkey }, "p", function() menubar.show() end, {description = "show the menubar", group = "5 run"}),
-
 -- Running
-awful.key({ modkey }, "r", function () awful.screen.focused().mypromptbox:run() end, {description = "run prompt", group = "5 run"}),
-awful.key({ modkey }, "x", function ()
-	awful.prompt.run {
-		prompt = "Run Lua code: ",
-		textbox = awful.screen.focused().mypromptbox.widget,
-		exe_callback = awful.util.eval,
-		history_path = awful.util.get_cache_dir() .. "/history_eval"
-	}
-end, {description = "lua execute prompt", group = "5 run"}),
+awful.key({ modkey, }, "Return", function () awful.spawn(terminal) end, {description = "open a terminal", group = "5 run"}),
+awful.key({ modkey }, "p", function() menubar_run() end, {description = "show the menubar", group = "5 run"}),
+awful.key({ modkey }, "r", function() awful.screen.focused().mypromptbox:run() end, {description = "run prompt", group = "5 run"}),
+awful.key({ modkey }, "x", shell_run, {description = "lua execute prompt", group = "5 run"}),
 
 -- My own bindings
 awful.key({ modkey }, "a", function() awful.spawn.with_shell("flameshot gui") end, {description = "run flameshot", group = "robberfox"}),
@@ -93,3 +109,4 @@ awful.key({ modkey }, "]", function () awful.util.spawn(config_path.."script/bac
 )
 
 return globalkeys
+

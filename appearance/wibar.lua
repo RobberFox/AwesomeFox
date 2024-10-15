@@ -1,16 +1,18 @@
 local awful = require("awful")
 local wibox = require("wibox")
 
-require("appearance.taglist")
-require("appearance.tasklist")
-require("appearance.tray")
-
-set_wallpaper = require("appearance.wallpaper")
+local appearance = { -- my library
+	set_wallpaper = require("appearance.wallpaper"),
+	mytaglist = require("appearance.taglist"),
+	mytasklist = require("appearance.tasklist"),
+	mytraywidgets = require("appearance.tray"),
+}
 
 awful.screen.connect_for_each_screen(function(s)
-	set_wallpaper(s)
+	appearance.set_wallpaper(s)
 
 	s.mypromptbox = awful.widget.prompt(s)
+	s.mylayoutbox = awful.widget.layoutbox(s)
 
 	s.mywibox = awful.wibar({ position = "top", screen = s, height = 24 })
 
@@ -20,19 +22,24 @@ awful.screen.connect_for_each_screen(function(s)
 		{ -- Left widgets
 			layout = wibox.layout.fixed.horizontal,
 
-			s.mytaglist,
+			appearance.mytaglist(s),
 			s.mypromptbox,
 		},
 
-		s.mytasklist, -- Middle widget
+		appearance.mytasklist(s), -- Middle widget
 
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
 
-			s.mybattery,
-			wibox.container.margin(s.mysystray, 2, 2, 2, 2),
-			s.mytextclock,
+			appearance.mytraywidgets.mybattery(s),
+			appearance.mytraywidgets.mysystray(s),
+			appearance.mytraywidgets.mytextclock(s),
 			s.mylayoutbox,
 		},
 	}
 end)
+
+-- Other way of going through screens:
+-- for s in screen do
+-- 	s.mywibox.visible = not s.mywibox.visible
+-- end

@@ -15,21 +15,18 @@ awful.button({ }, 1, function (c)
 		)
 	end
 end),
-awful.button({ }, 3, function()
-	awful.menu.client_list({ theme = { width = 250 } })
-end),
-awful.button({ }, 4, function ()
-	awful.client.focus.byidx(1)
-end),
-awful.button({ }, 5, function ()
-	awful.client.focus.byidx(-1)
-end))
+awful.button({ }, 3, function() awful.menu.client_list({ theme = { width = 250 } }) end),
+awful.button({ }, 4, function () awful.client.focus.byidx(1) end),
+awful.button({ }, 5, function () awful.client.focus.byidx(-1) end)
+)
 
-awful.screen.connect_for_each_screen(function(s)
-	s.mytasklist = awful.widget.tasklist {
-		screen = s,
+local function tasklist(s)
+	return awful.widget.tasklist {
 		filter = awful.widget.tasklist.filter.currenttags,
 		buttons = tasklist_buttons,
-	}
-end)
 
+		screen = s,
+	}
+end
+
+return tasklist
