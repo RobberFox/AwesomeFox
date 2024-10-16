@@ -44,7 +44,6 @@ end
 
 function widgets.mysystray(s)
 	return wibox.widget {
-		-- WIP wibox.container.margin(appearance.mytraywidgets.mysystray(s), 2, 2, 2, 2),
 
 		widget = wibox.widget.systray,
 		screen = s,

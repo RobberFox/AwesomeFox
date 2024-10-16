@@ -32,7 +32,7 @@ awful.screen.connect_for_each_screen(function(s)
 			layout = wibox.layout.fixed.horizontal,
 
 			appearance.mytraywidgets.mybattery(s),
-			appearance.mytraywidgets.mysystray(s),
+			wibox.container.margin(appearance.mytraywidgets.mysystray(s), 2, 2, 2, 2),
 			appearance.mytraywidgets.mytextclock(s),
 			s.mylayoutbox,
 		},
