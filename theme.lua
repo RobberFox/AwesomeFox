@@ -7,7 +7,7 @@ local config_path = vars.config_path
 
 local theme = {}
 
-theme.font          = "jetbrainsmono 9"
+theme.font          = "jetbrainsmono bold 10"
 
 theme.bg_normal     = "#1a1b26"
 theme.bg_focus      = "#292e42"
@@ -36,6 +36,10 @@ theme.fg_magenta        =  "#94738c"
 theme.fg_cyan           =  "#69b2b2"
 theme.fg_white          =  "#ffffff"
 
+-- Generate taglist squares:
+local taglist_square_size = dpi(4)
+theme.taglist_squares_sel = theme_assets.taglist_squares_sel(taglist_square_size, theme.fg_normal)
+theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(taglist_square_size, theme.fg_normal)
 
 -- There are other variable sets
 -- overriding the default one when
@@ -49,11 +53,6 @@ theme.fg_white          =  "#ffffff"
 -- hotkeys_[bg|fg|border_width|border_color|shape|opacity|modifiers_fg|label_bg|label_fg|group_margin|font|description_font]
 -- Example:
 --theme.taglist_bg_focus = "#ff0000"
-
--- Generate taglist squares:
-local taglist_square_size = dpi(4)
-theme.taglist_squares_sel = theme_assets.taglist_squares_sel(taglist_square_size, theme.fg_normal)
-theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(taglist_square_size, theme.fg_normal)
 
 -- Variables set for theming notifications:
 -- notification_font
