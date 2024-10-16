@@ -48,7 +48,12 @@ awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1
 -- Tag browsing
 awful.key({ modkey, }, "Left", awful.tag.viewprev, {description = "view previous", group = "tag"}),
 awful.key({ modkey, }, "Right", awful.tag.viewnext, {description = "view next", group = "tag"}),
-awful.key({ modkey, }, "Escape", awful.tag.history.restore, {description = "go back", group = "tag"}),
+awful.key({ modkey, }, "Escape", function()
+	awful.tag.history.restore()
+	client.focus = awful.client.getmaster()
+end, {description = "go back", group = "tag"}),
+
+
 
 -- Window manipulation
 awful.key({ modkey, "Shift" }, "j", function () awful.client.swap.byidx( 1) end, {description = "swap with next client by index", group = "1 window"}),
@@ -109,4 +114,3 @@ awful.key({ modkey }, "]", function () awful.util.spawn(config_path.."script/bac
 )
 
 return globalkeys
-

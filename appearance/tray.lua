@@ -1,10 +1,11 @@
 local wibox = require("wibox")
-local awful = require("awful")
 local beautiful = require("beautiful")
 
 local vars = require("main.user-variable")
 
 -- NOTE: Functions for displaying information
+-- /sys/class/power_supply
+
 local function battery()
 	local info, file
 
@@ -26,7 +27,7 @@ local widgets = {}
 function widgets.mytextclock(s)
 	return wibox.widget {
 		format = " %a %b %d > %H:%M ",
-		font =  "jetbrainsmono bold 12",
+		font =  "jetbrainsmono bold 10",
 
 		widget = wibox.widget.textclock,
 		screen = s,
