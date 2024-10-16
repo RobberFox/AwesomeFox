@@ -6,6 +6,7 @@ local appearance = { -- my library
 	mytaglist = require("appearance.taglist"),
 	mytasklist = require("appearance.tasklist"),
 	mytraywidgets = require("appearance.tray"),
+	mypadding = require("appearance.padding"),
 }
 
 awful.screen.connect_for_each_screen(function(s)
@@ -27,6 +28,7 @@ awful.screen.connect_for_each_screen(function(s)
 		},
 
 		appearance.mytasklist(s), -- Middle widget
+		--appearance.mypadding,
 
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,

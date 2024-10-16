@@ -36,10 +36,9 @@ theme.fg_magenta        =  "#94738c"
 theme.fg_cyan           =  "#69b2b2"
 theme.fg_white          =  "#ffffff"
 
--- Generate taglist squares:
-local taglist_square_size = dpi(4)
-theme.taglist_squares_sel = theme_assets.taglist_squares_sel(taglist_square_size, theme.fg_normal)
-theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(taglist_square_size, theme.fg_normal)
+
+-- theme.tasklist_disable_task_name = true
+-- theme.tasklist_align = "center"
 
 -- There are other variable sets
 -- overriding the default one when
