@@ -7,34 +7,47 @@ local config_path = vars.config_path
 
 local theme = {}
 
-theme.font          = "jetbrainsmono bold 10"
+theme.font = "jetbrainsmono bold 10"
 
-theme.bg_normal     = "#1a1b26"
-theme.bg_focus      = "#292e42"
-theme.bg_urgent     = "#ff0000"
-theme.bg_minimize   = "#666666"
-theme.bg_systray    = theme.bg_normal
+theme.bg_normal = "#1a1b26"
+theme.bg_focus = "#292e42"
+theme.bg_urgent = "#ff0000"
+theme.bg_minimize = "#666666"
+theme.bg_systray = theme.bg_normal
 
-theme.fg_normal     = "#a9b1d6"
-theme.fg_focus      = "#c0caf5"
-theme.fg_urgent     = "#ffffff"
-theme.fg_minimize   = "#ffffff"
+theme.fg_normal = "#a9b1d6"
+theme.fg_focus = "#c0caf5"
+theme.fg_urgent = "#ffffff"
+theme.fg_minimize = "#ffffff"
 
-theme.useless_gap   = dpi(0)
-theme.border_width  = dpi(1)
+theme.useless_gap = dpi(0)
+theme.border_width = dpi(1)
 theme.border_normal = "#1b1b23"
-theme.border_focus  = "#7aa2f7"
+theme.border_focus = "#7aa2f7"
 theme.border_marked = "#91231c"
 
-theme.fg_grey           =  "#424242"
-theme.fg_black          =  "#080808"
-theme.fg_red            =  "#ce5666"
-theme.fg_green          =  "#80a673"
-theme.fg_yellow         =  "#ffaf5f"
-theme.fg_blue           =  "#778baf"
-theme.fg_magenta        =  "#94738c"
-theme.fg_cyan           =  "#69b2b2"
-theme.fg_white          =  "#ffffff"
+theme.black = "#1a1b26"
+theme.red = "#f7768e"
+theme.green = "#9ece6a"
+theme.yellow = "#e0af68"
+theme.blue = "#7aa2f7"
+theme.magenta = "#bb9af7"
+theme.cyan = "#7dcfff"
+theme.white = "#a9b1d6"
+theme.orange = "#ff9e64"
+
+theme.html_white = "<span color='"..theme.fg_focus.."'>"
+theme.html_gray = "<span color='#777777'>"
+
+-- theme.fg_grey = "#424242"
+-- theme.fg_black = "#080808"
+-- theme.fg_red = "#ce5666"
+-- theme.fg_green = "#80a673"
+-- theme.fg_yellow = "#ffaf5f"
+-- theme.fg_blue = "#778baf"
+-- theme.fg_magenta = "#94738c"
+-- theme.fg_cyan = "#69b2b2"
+-- theme.fg_white = "#ffffff"
 
 
 -- theme.tasklist_disable_task_name = true

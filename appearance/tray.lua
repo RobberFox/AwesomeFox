@@ -2,6 +2,23 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 
 local vars = require("main.user-variable")
+local awful = require("awful")
+local gears = require("gears")
+
+-- NOTE: Some sysinfo
+gears.timer {
+    timeout   = 60,
+    call_now  = true,
+    autostart = true,
+    callback  = function()
+		awful.spawn.easy_async_with_shell("acpi", function(stdout)
+				value = string.match(stdout, "%d+%%")
+			if (value ~= nil or value ~= '') then
+				awesome.emit_signal("laptop::battery", value)
+			end
+		end)
+    end
+}
 
 -- System tray stuff
 local dpi = vars.dpi
@@ -13,8 +30,7 @@ local widgets = {}
 
 function widgets.mytextclock(s)
 	return wibox.widget {
-		format = "%a %b %d > %H:%M ",
-
+		format = beautiful.html_white .. "%a %b %d" .. "</span>" .. beautiful.html_gray .. " > " .. "</span>" .. beautiful.html_white .. "%H:%M " .. "</span>",
 		widget = wibox.widget.textclock,
 		screen = s,
 	}
@@ -29,7 +45,11 @@ function widgets.mybrightness(s)
 		brightnesswidget.text = value
 	end)
 
-	return brightnesswidget
+	return wibox.widget({
+		brightnesswidget,
+		fg = beautiful.cyan,
+		widget = wibox.container.background
+	})
 end
 
 
@@ -42,14 +62,26 @@ function widgets.myvolume(s)
 		volumewidget.text = status.."-"..percentage.." "
 	end)
 
-	return volumewidget
+	return wibox.widget({
+		volumewidget,
+		fg = beautiful.border_focus,
+		widget = wibox.container.background
+	})
 end
 
 function widgets.mybattery(s)
-	return wibox.widget {
-
+	local batterywidget = wibox.widget {
 		widget = wibox.widget.textbox(),
 		screen = s,
+	}
+	awesome.connect_signal("laptop::battery", function(percentage)
+		batterywidget.text = percentage.." "
+	end)
+
+	return wibox.widget {
+		batterywidget,
+		fg = beautiful.yellow,
+		widget = wibox.container.background
 	}
 end
 

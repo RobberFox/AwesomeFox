@@ -35,14 +35,7 @@ awful.screen.connect_for_each_screen(function(s)
 
 			appearance.mytraywidgets.mybrightness(s),
 			appearance.mytraywidgets.myvolume(s),
-
-			awful.widget.watch("acpi", 60, function(widget, stdout)
-				percentage = string.match(stdout, "%d+%%")
-				if (percentage ~= nil or percentage ~= '') then
-					widget:set_text(percentage.." ")
-				end
-			end, appearance.mytraywidgets.mybattery(s)),
-
+			appearance.mytraywidgets.mybattery(s),
 			appearance.mytraywidgets.mytextclock(s),
 			wibox.container.margin(appearance.mytraywidgets.mysystray(s), 2, 2, 2, 2),
 			s.mylayoutbox,
