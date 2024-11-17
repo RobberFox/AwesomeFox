@@ -39,7 +39,7 @@ function widgets.myvolume(s)
 		screen = s,
 	}
 	awesome.connect_signal("laptop::volume", function(percentage, status)
-		volumewidget.text = percentage.."-"..status.." "
+		volumewidget.text = status.."-"..percentage.." "
 	end)
 
 	return volumewidget
