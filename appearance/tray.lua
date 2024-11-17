@@ -3,19 +3,6 @@ local beautiful = require("beautiful")
 
 local vars = require("main.user-variable")
 
--- NOTE: Functions for displaying information
--- /sys/class/power_supply
-
-local function battery()
-	local info, file
-
-	file = io.popen("acpi -b | cut -d ',' -f 2")
-	info = file:read("*all")
-	file:close()
-
-	return " "..info.." "
-end
-
 -- System tray stuff
 local dpi = vars.dpi
 beautiful.systray_icon_spacing = dpi(4)
@@ -26,19 +13,42 @@ local widgets = {}
 
 function widgets.mytextclock(s)
 	return wibox.widget {
-		format = " %a %b %d > %H:%M ",
-		font =  "jetbrainsmono bold 10",
+		format = "%a %b %d > %H:%M ",
 
 		widget = wibox.widget.textclock,
 		screen = s,
 	}
 end
 
+function widgets.mybrightness(s)
+	local brightnesswidget = wibox.widget {
+		widget = wibox.widget.textbox(),
+		screen = s,
+	}
+	awesome.connect_signal("laptop::brightness", function(value)
+		brightnesswidget.text = value
+	end)
+
+	return brightnesswidget
+end
+
+
+function widgets.myvolume(s)
+	local volumewidget = wibox.widget {
+		widget = wibox.widget.textbox(),
+		screen = s,
+	}
+	awesome.connect_signal("laptop::volume", function(percentage, status)
+		volumewidget.text = percentage.."-"..status.." "
+	end)
+
+	return volumewidget
+end
+
 function widgets.mybattery(s)
 	return wibox.widget {
-		text = battery(),
 
-		widget = wibox.widget.textbox,
+		widget = wibox.widget.textbox(),
 		screen = s,
 	}
 end

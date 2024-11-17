@@ -13,7 +13,6 @@ local _M = {
 
 	modkey = "Mod4",
 	altkey = "Mod1",
-
 }
 
 return _M
