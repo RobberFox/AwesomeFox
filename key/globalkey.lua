@@ -126,15 +126,15 @@ volume_emit("+") -- Otherwise you don't see widget info until the first invocati
 	end, {description = "hide wibar", group = "robberfox"}),
 
 	-- Laptop
-	awful.key({}, "#121", function()
+	awful.key({ modkey }, ",", function()
 		volume_emit("toggle")
 	end, {description = "Laptop - toggle volume", group = "laptop"}),
 
-	awful.key({}, "#122", function()
+	awful.key({ modkey }, ".", function()
 		volume_emit("5%-")
 	end, {description = "Laptop - volume down", group = "laptop"}),
 
-	awful.key({}, "#123", function()
+	awful.key({ modkey }, "/", function()
 		volume_emit("5%+")
 	end, {description = "Laptop = volume up", group = "laptop"}),
 
