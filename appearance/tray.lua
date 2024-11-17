@@ -75,7 +75,9 @@ function widgets.mybattery(s)
 		screen = s,
 	}
 	awesome.connect_signal("laptop::battery", function(percentage)
-		batterywidget.text = percentage.." "
+		if percentage ~= nil then
+			batterywidget.text = percentage.." "
+		end
 	end)
 
 	return wibox.widget {
