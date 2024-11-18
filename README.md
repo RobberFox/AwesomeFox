@@ -4,7 +4,7 @@
 
 **Notes:**
 - It's not recommended to blindly copy this config since it contains a `backlight.sh` script which requires adding privilege to users to edit `/sys/class/backlight` (see: https://wiki.archlinux.org/title/Backlight)
-- This config has been stripped from xdesktop appmenu, titlebars and all code related to them.
+- This config has been stripped off of xdesktop appmenu, titlebars and all code related to them.
 ![image](https://github.com/user-attachments/assets/41b869c4-1257-4822-93ee-11ff0c2c3f34)
 
 ### Appearance
