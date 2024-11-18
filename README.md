@@ -1,6 +1,7 @@
 ![image](https://github.com/user-attachments/assets/b46ca6b7-af10-419d-a18b-53dfab41b637)
 
-Modularized AwesomeWM configuration:
+# Modularized AwesomeWM configuration:
+
 **Notes:**
 - It's not recommended to blindly copy this config since it contains a `backlight.sh` script which requires adding privilege to users to edit `/sys/class/backlight` (see: https://wiki.archlinux.org/title/Backlight)
 - This config has been stripped from xdesktop appmenu, titlebars and all code related to them.
