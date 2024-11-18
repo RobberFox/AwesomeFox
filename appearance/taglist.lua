@@ -32,41 +32,41 @@ local taglist_buttons = gears.table.join(
 	awful.button({ }, 5, function(t) awful.tag.viewprev(t.screen) end)
 )
 
-local widget_template_taglist = {
-	{
-		{
-			{
-				bg = theme.fg_normal,
-				fg = theme.bg_normal,
-				shape = gears.shape.circle,
-				widget = wibox.container.background,
-				{
-					margins = 4,
-					widget  = wibox.container.margin,
-					{
-						id     = 'index_role',
-						widget = wibox.widget.textbox,
-					},
-				},
-			},
-			{
-				id     = 'text_role',
-				widget = wibox.widget.textbox,
-			},
-			layout = wibox.layout.fixed.horizontal,
-		},
-		widget = wibox.container.margin
-	},
-	id     = 'background_role',
-	widget = wibox.container.background,
-
-	create_callback = function(self, c3, index, objects) --luacheck: no unused args
-		self:get_children_by_id('index_role')[1].markup = '<b> '..index..' </b>'
-	end,
-	update_callback = function(self, c3, index, objects) --luacheck: no unused args
-		self:get_children_by_id('index_role')[1].markup = '<b> '..index..' </b>'
-	end,
-}
+-- local widget_template_taglist = {
+-- 	{
+-- 		{
+-- 			{
+-- 				bg = theme.fg_normal,
+-- 				fg = theme.bg_normal,
+-- 				shape = gears.shape.circle,
+-- 				widget = wibox.container.background,
+-- 				{
+-- 					margins = 4,
+-- 					widget  = wibox.container.margin,
+-- 					{
+-- 						id     = 'index_role',
+-- 						widget = wibox.widget.textbox,
+-- 					},
+-- 				},
+-- 			},
+-- 			{
+-- 				id     = 'text_role',
+-- 				widget = wibox.widget.textbox,
+-- 			},
+-- 			layout = wibox.layout.fixed.horizontal,
+-- 		},
+-- 		widget = wibox.container.margin
+-- 	},
+-- 	id     = 'background_role',
+-- 	widget = wibox.container.background,
+-- 
+-- 	create_callback = function(self, c3, index, objects) --luacheck: no unused args
+-- 		self:get_children_by_id('index_role')[1].markup = '<b> '..index..' </b>'
+-- 	end,
+-- 	update_callback = function(self, c3, index, objects) --luacheck: no unused args
+-- 		self:get_children_by_id('index_role')[1].markup = '<b> '..index..' </b>'
+-- 	end,
+-- }
 
 
 local function taglist(s)
@@ -78,4 +78,3 @@ local function taglist(s)
 end
 
 return taglist
-
