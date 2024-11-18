@@ -12,5 +12,6 @@ awful.spawn.once("krita", {})
 awful.spawn.once("zathura", {})
 
 -- Scripts
-awful.spawn(config_path.."/script/amixer.sh")
-awful.spawn(config_path.."/script/sensitivity.sh")
+awful.spawn(config_path.."script/amixer.sh")
+awful.spawn(config_path.."script/sensitivity.sh")
+awful.spawn(config_path.."script/xkb_layout.sh")

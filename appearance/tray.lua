@@ -28,6 +28,20 @@ beautiful.systray_icon_spacing = dpi(4)
 
 local widgets = {}
 
+
+function widgets.mykeyboardlayout(s)
+	local keyboardwidget = wibox.widget {
+		widget = awful.widget.keyboardlayout(),
+		screen = s,
+	}
+
+	return wibox.widget({
+		keyboardwidget,
+		fg = beautiful.fg_focus,
+		widget = wibox.container.background
+	})
+end
+
 function widgets.mytextclock(s)
 	return wibox.widget {
 		format = beautiful.html_white .. "%a %b %d" .. "</span>" .. beautiful.html_gray .. " > " .. "</span>" .. beautiful.html_white .. "%H:%M " .. "</span>",

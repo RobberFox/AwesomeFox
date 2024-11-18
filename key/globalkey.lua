@@ -1,6 +1,7 @@
 local awful = require("awful")
 local gears = require("gears")
 local menubar = require("menubar")
+local naughty = require("naughty")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 
 local vars = require("main.user-variable")
@@ -27,6 +28,8 @@ local function spawn_here(cmd)
 	})
 end
 
+local keyboard_layout = "ru"
+
 local function brightness_emit(arg)
 	awful.spawn.easy_async_with_shell(config_path.."script/backlight.sh".." "..arg, function(stdout)
 		local value = stdout
@@ -48,6 +51,8 @@ local function volume_emit(arg)
 	end)
 end
 volume_emit("+") -- Otherwise you don't see widget info until the first invocation
+
+-- local keyboard_layout = "ru"
 
 -- menubar.prompt_args {
 	-- 	exe_callback = spawn_here()
@@ -88,7 +93,7 @@ volume_emit("+") -- Otherwise you don't see widget info until the first invocati
 			client.focus:raise()
 		end
 	end, {description = "go back", group = "3 client"}),
-	awful.key({ modkey, }, "u", awful.client.urgent.jumpto, {description = "jump to urgent client", group = "3 client"}),
+	-- awful.key({ modkey, }, "u", awful.client.urgent.jumpto, {description = "jump to urgent client", group = "3 client"}),
 
 	awful.key({ modkey, }, "space", function() awful.layout.inc(1) end, {description = "select next", group = "layout"}),
 	awful.key({ modkey, "Shift" }, "space", function() awful.layout.inc(-1) end, {description = "select previous", group = "layout"}),
@@ -106,6 +111,8 @@ volume_emit("+") -- Otherwise you don't see widget info until the first invocati
 	-- Window manipulation with incrementation
 	awful.key({ modkey, }, "l", function() awful.tag.incmwfact( 0.05) end, {description = "increase master width factor", group = "2 window - increment"}),
 	awful.key({ modkey, }, "h", function() awful.tag.incmwfact(-0.05) end, {description = "decrease master width factor", group = "2 window - increment"}),
+	awful.key({ modkey, }, "y", function() awful.screen.focused().selected_tag.master_width_factor = 0.33 end, {description = "master width factor: 0.33", group = "2 window - increment"}),
+	awful.key({ modkey, }, "u", function() awful.screen.focused().selected_tag.master_width_factor = 0.65 end, {description = "master width factor: 0.65", group = "2 window - increment"}),
 	awful.key({ modkey, "Shift" }, "h", function() awful.tag.incnmaster( 1, nil, true) end, {description = "increase the number of master clients", group = "2 window - increment"}),
 	awful.key({ modkey, "Shift" }, "l", function() awful.tag.incnmaster(-1, nil, true) end, {description = "decrease the number of master clients", group = "2 window - increment"}),
 	awful.key({ modkey, "Control" }, "h", function() awful.tag.incncol( 1, nil, true) end, {description = "increase the number of columns", group = "2 window - increment"}),
@@ -144,7 +151,20 @@ volume_emit("+") -- Otherwise you don't see widget info until the first invocati
 
 	awful.key({ modkey }, "]", function()
 		brightness_emit(" +")
-	end, {description = "Laptop = backlight up", group = "laptop"})
+	end, {description = "Laptop = backlight up", group = "laptop"}),
+
+	-- Keyboard layout
+	awful.key({ modkey }, "q", function()
+		keyboard_layout = (keyboard_layout == "ru") and "am" or "ru"
+		naughty.notify({ title = "Layout Group:", text = "us,"..keyboard_layout, timeout = 3 })
+
+	end, {description = "Change layout group", group = "language"}),
+	awful.key({ }, "#191", function()
+		awful.spawn.with_shell("echo 'switch' | "..config_path.."script/xkb-group.sh 'us(altgr-intl)' "..keyboard_layout.." 2> /dev/null")
+		-- awful.spawn.easy_async_with_shell("xkb-switch -p", function(stdout)
+		-- 	naughty.notify({ title = "Layout:", text = stdout, position = "bottom_middle", timeout = 0.5 })
+		-- end)
+	end, {description = "Change layout", group = "language"})
 )
 
 return globalkeys
