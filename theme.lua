@@ -27,6 +27,7 @@ theme.border_focus = "#7aa2f7"
 theme.border_marked = "#91231c"
 
 theme.black = "#1a1b26"
+theme.gray = "#3b4261"
 theme.red = "#f7768e"
 theme.green = "#9ece6a"
 theme.yellow = "#e0af68"
@@ -37,7 +38,7 @@ theme.white = "#a9b1d6"
 theme.orange = "#ff9e64"
 
 theme.html_white = "<span color='"..theme.fg_focus.."'>"
-theme.html_gray = "<span color='#777777'>"
+theme.html_gray = "<span color='"..theme.gray.."'>"
 
 -- theme.fg_grey = "#424242"
 -- theme.fg_black = "#080808"
