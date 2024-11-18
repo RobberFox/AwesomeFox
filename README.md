@@ -1,8 +1,11 @@
+![image](https://github.com/user-attachments/assets/b46ca6b7-af10-419d-a18b-53dfab41b637)
+
 Modularized AwesomeWM configuration:
-![image](https://github.com/user-attachments/assets/41b869c4-1257-4822-93ee-11ff0c2c3f34)
 **Notes:**
 - It's not recommended to blindly copy this config since it contains a `backlight.sh` script which requires adding privilege to users to edit `/sys/class/backlight` (see: https://wiki.archlinux.org/title/Backlight)
 - This config has been stripped from xdesktop appmenu, titlebars and all code related to them.
+![image](https://github.com/user-attachments/assets/41b869c4-1257-4822-93ee-11ff0c2c3f34)
+
 ### Appearance
 Contains customization of the wibar.
 - Padding - auxillary widget to add spacing between other widgets (not used yet)
