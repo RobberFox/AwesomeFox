@@ -32,6 +32,7 @@ root.keys(globalkeys)
 root.buttons(globalbuttons)
 
 require("module.auto-start")
+require("module.share_keyboard_layout")
 
 --local naughty = require("naughty")
 --awesome.connect_signal("laptop::brightness", function(value)
