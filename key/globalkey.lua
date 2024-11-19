@@ -157,11 +157,37 @@ end, {description = "Laptop = backlight up", group = "laptop"}),
 awful.key({ modkey }, "q", function()
 	keyboard_layout = (keyboard_layout == "ru") and "am" or "ru"
 	naughty.notify({ title = "Layout Group:", text = "us,"..keyboard_layout, timeout = 3 })
-
 end, {description = "Change layout group", group = "language"}),
+
 awful.key({ }, "#191", function()
 	awful.spawn.with_shell("echo 'switch' | "..config_path.."script/xkb-group.sh 'us(altgr-intl)' "..keyboard_layout.." 2> /dev/null")
-end, {description = "Change layout", group = "language"})
+	awesome.emit_signal("keyboard::layout", awesome.xkb_get_layout_group())
+end, {description = "Change layout", group = "language"}),
+
+-- Debug
+awful.key({ modkey }, ";", function()
+	local c = client.focus
+
+	function dump(o)
+		if type(o) == 'table' then
+			local s = '{ '
+			for k,v in pairs(o) do
+				if type(k) ~= 'number' then k = '"'..k..'"' end
+				s = s .. '['..k..'] = ' .. dump(v) .. ','
+			end
+			return s .. '} '
+		else
+			return tostring(o)
+		end
+	end
+
+	awful.spawn.easy_async_with_shell("xkb-switch", function(stdout)
+		c.keyboard_layout = stdout
+	end)
+
+	naughty.notify({ title = "Clients:", text = dump(c), timeout = 10 })
+	naughty.notify({ title = "Layout:", text = c.keyboard_layout, timeout = 10 })
+end, {description = "Debug", group = "awesome"})
 )
 
 return globalkeys

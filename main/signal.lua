@@ -23,3 +23,6 @@ client.connect_signal("property::urgent", function(c)
     c.minimized = false
     c:jump_to()
 end)
+
+-- Another signal config: module/share_keyboard_layout.lua
+

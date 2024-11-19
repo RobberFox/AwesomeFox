@@ -28,18 +28,27 @@ beautiful.systray_icon_spacing = dpi(4)
 
 local widgets = {}
 
-
 function widgets.mykeyboardlayout(s)
 	local keyboardwidget = wibox.widget {
 		widget = awful.widget.keyboardlayout(),
 		screen = s,
 	}
 
-	return wibox.widget({
-		keyboardwidget,
+	local keyboardwiboxwidget = wibox.widget({
 		fg = beautiful.fg_focus,
+		keyboardwidget,
 		widget = wibox.container.background
 	})
+
+	awesome.connect_signal("keyboard::layout", function(kbd_layout)
+		if kbd_layout == 0 then
+			keyboardwiboxwidget.fg = beautiful.red
+		else
+			keyboardwiboxwidget.fg = beautiful.fg_focus
+		end
+	end)
+
+	return keyboardwiboxwidget
 end
 
 function widgets.mytextclock(s)
