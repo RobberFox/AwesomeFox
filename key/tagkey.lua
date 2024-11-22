@@ -45,6 +45,7 @@ for i = 1, 9 do
 			local tag = client.focus.screen.tags[i]
 			if tag then
 				client.focus:toggle_tag(tag)
+				awful.client.setslave(client.focus)
 			end
 		end
 	end, {description = "toggle focused client on tag #" .. i, group = "numerated"})

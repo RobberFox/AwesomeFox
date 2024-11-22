@@ -35,18 +35,18 @@ function widgets.mykeyboardlayout(s)
 	}
 
 	local keyboardwiboxwidget = wibox.widget({
-		fg = beautiful.fg_focus,
+		fg = beautiful.red,
 		keyboardwidget,
 		widget = wibox.container.background
 	})
 
-	awesome.connect_signal("keyboard::layout", function(kbd_layout)
-		if kbd_layout == 0 then
-			keyboardwiboxwidget.fg = beautiful.red
-		else
-			keyboardwiboxwidget.fg = beautiful.fg_focus
-		end
-	end)
+	-- awesome.connect_signal("keyboard::layout", function(kbd_layout) -- WIP: NEED TO FIX THIS
+	-- 	if kbd_layout == 0 then
+	-- 		keyboardwiboxwidget.fg = beautiful.red
+	-- 	else
+	-- 		keyboardwiboxwidget.fg = beautiful.fg_focus
+	-- 	end
+	-- end)
 
 	return keyboardwiboxwidget
 end

@@ -161,14 +161,14 @@ end, {description = "Change layout group", group = "language"}),
 
 awful.key({ }, "#191", function()
 	awful.spawn.with_shell("echo 'switch' | "..config_path.."script/xkb-group.sh 'us(altgr-intl)' "..keyboard_layout.." 2> /dev/null")
-	awesome.emit_signal("keyboard::layout", awesome.xkb_get_layout_group())
+	-- awesome.emit_signal("keyboard::layout", awesome.xkb_get_layout_group()) -- WIP: NEED TO FIX THIS
 end, {description = "Change layout", group = "language"})
 )
 
 -- Debug
 -- awful.key({ modkey }, ";", function()
 -- 	local c = client.focus
--- 
+--
 -- 	function dump(o)
 -- 		if type(o) == 'table' then
 -- 			local s = '{ '
@@ -181,11 +181,11 @@ end, {description = "Change layout", group = "language"})
 -- 			return tostring(o)
 -- 		end
 -- 	end
--- 
+--
 -- 	awful.spawn.easy_async_with_shell("xkb-switch", function(stdout)
 -- 		c.keyboard_layout = stdout
 -- 	end)
--- 
+--
 -- 	naughty.notify({ title = "Clients:", text = dump(c), timeout = 10 })
 -- 	naughty.notify({ title = "Layout:", text = c.keyboard_layout, timeout = 10 })
 -- end, {description = "Debug", group = "awesome"})

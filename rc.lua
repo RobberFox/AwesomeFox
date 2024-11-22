@@ -21,6 +21,7 @@ require("main.rule")
 require("main.error")
 
 require("main.signal")
+require("module.share_keyboard_layout")
 
 local globalkeys = require("key.globalkey")
 local globalbuttons = require("key.globalbuttons")
@@ -32,7 +33,6 @@ root.keys(globalkeys)
 root.buttons(globalbuttons)
 
 require("module.auto-start")
-require("module.share_keyboard_layout")
 
 --local naughty = require("naughty")
 --awesome.connect_signal("laptop::brightness", function(value)
