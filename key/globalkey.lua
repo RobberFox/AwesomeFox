@@ -52,8 +52,6 @@ local function volume_emit(arg)
 end
 volume_emit("+") -- Otherwise you don't see widget info until the first invocation
 
--- local keyboard_layout = "ru"
-
 -- menubar.prompt_args {
 -- 	exe_callback = spawn_here()
 -- }
@@ -79,11 +77,9 @@ awful.key({ modkey, }, "Escape", function()
 	client.focus = awful.client.getmaster()
 end, {description = "go back", group = "tag"}),
 
-
-
 -- Window manipulation
-awful.key({ modkey, "Shift" }, "j", function() awful.client.swap.byidx( 1) end, {description = "swap with next client by index", group = "1 window"}),
-awful.key({ modkey, "Shift" }, "k", function() awful.client.swap.byidx( -1) end, {description = "swap with previous client by index", group = "1 window"}),
+awful.key({ modkey, "Shift" }, "j", function() awful.client.swap.byidx( -1) end, {description = "swap with previous client", group = "1 window"}),
+awful.key({ modkey, "Shift" }, "k", function() awful.client.swap.byidx( 1) end, {description = "swap with next client", group = "1 window"}),
 awful.key({ modkey, }, "j", function() awful.client.focus.byidx( 1) end, {description = "focus next by index", group = "1 window"}),
 awful.key({ modkey, }, "k", function() awful.client.focus.byidx(-1) end, {description = "focus previous by index", group = "1 window"}),
 
@@ -102,16 +98,14 @@ awful.key({ modkey, "Control" }, "n", function()
 	local c = awful.client.restore()
 	-- Focus restored client
 	if c then
-		c:emit_signal(
-		"request::activate", "key.unminimize", {raise = true}
-		)
+		c:emit_signal("request::activate", "key.unminimize", {raise = true})
 	end
 end, {description = "restore minimized", group = "4 min/max"}),
 
 -- Window manipulation with incrementation
 awful.key({ modkey, }, "l", function() awful.tag.incmwfact( 0.05) end, {description = "increase master width factor", group = "2 window - increment"}),
 awful.key({ modkey, }, "h", function() awful.tag.incmwfact(-0.05) end, {description = "decrease master width factor", group = "2 window - increment"}),
-awful.key({ modkey, }, "y", function() awful.screen.focused().selected_tag.master_width_factor = 0.33 end, {description = "master width factor: 0.33", group = "2 window - increment"}),
+awful.key({ modkey, }, "y", function() awful.screen.focused().selected_tag.master_width_factor = 1/3 end, {description = "master width factor: 1/3", group = "2 window - increment"}),
 awful.key({ modkey, }, "u", function() awful.screen.focused().selected_tag.master_width_factor = 0.65 end, {description = "master width factor: 0.65", group = "2 window - increment"}),
 awful.key({ modkey, "Shift" }, "h", function() awful.tag.incnmaster( 1, nil, true) end, {description = "increase the number of master clients", group = "2 window - increment"}),
 awful.key({ modkey, "Shift" }, "l", function() awful.tag.incnmaster(-1, nil, true) end, {description = "decrease the number of master clients", group = "2 window - increment"}),
@@ -119,7 +113,7 @@ awful.key({ modkey, "Control" }, "h", function() awful.tag.incncol( 1, nil, true
 awful.key({ modkey, "Control" }, "l", function() awful.tag.incncol(-1, nil, true) end, {description = "decrease the number of columns", group = "2 window - increment"}),
 
 -- Running
-awful.key({ modkey, }, "Return", function() awful.spawn(terminal) end, {description = "open a terminal", group = "5 run"}),
+awful.key({ modkey, }, "Return", function() awful.spawn(terminal, false) end, {description = "open a terminal", group = "5 run"}),
 awful.key({ modkey }, "p", function() menubar_run() end, {description = "show the menubar", group = "5 run"}),
 awful.key({ modkey }, "r", function() awful.screen.focused().mypromptbox:run() end, {description = "run prompt", group = "5 run"}),
 awful.key({ modkey }, "x", shell_run, {description = "lua execute prompt", group = "5 run"}),
@@ -161,33 +155,10 @@ end, {description = "Change layout group", group = "language"}),
 
 awful.key({ }, "#191", function()
 	awful.spawn.with_shell("echo 'switch' | "..config_path.."script/xkb-group.sh 'us(altgr-intl)' "..keyboard_layout.." 2> /dev/null")
-	-- awesome.emit_signal("keyboard::layout", awesome.xkb_get_layout_group()) -- WIP: NEED TO FIX THIS
+	-- awful.spawn.easy_async_with_shell("echo 'switch' | "..config_path.."script/xkb-group.sh 'us(altgr-intl)' "..keyboard_layout.." 2> /dev/null", function()
+	-- 	awesome.emit_signal("keyboard::layout", awesome.xkb_get_layout_group())
+	-- end)
 end, {description = "Change layout", group = "language"})
 )
-
--- Debug
--- awful.key({ modkey }, ";", function()
--- 	local c = client.focus
---
--- 	function dump(o)
--- 		if type(o) == 'table' then
--- 			local s = '{ '
--- 			for k,v in pairs(o) do
--- 				if type(k) ~= 'number' then k = '"'..k..'"' end
--- 				s = s .. '['..k..'] = ' .. dump(v) .. ','
--- 			end
--- 			return s .. '} '
--- 		else
--- 			return tostring(o)
--- 		end
--- 	end
---
--- 	awful.spawn.easy_async_with_shell("xkb-switch", function(stdout)
--- 		c.keyboard_layout = stdout
--- 	end)
---
--- 	naughty.notify({ title = "Clients:", text = dump(c), timeout = 10 })
--- 	naughty.notify({ title = "Layout:", text = c.keyboard_layout, timeout = 10 })
--- end, {description = "Debug", group = "awesome"})
 
 return globalkeys

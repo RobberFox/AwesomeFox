@@ -34,7 +34,18 @@ root.buttons(globalbuttons)
 
 require("module.auto-start")
 
---local naughty = require("naughty")
---awesome.connect_signal("laptop::brightness", function(value)
---	naughty.notify({ title = "Brightness check:", text = stdout, timeout = 3 })
---end)
+-- function dump(o)
+-- 	if type(o) == 'table' then
+-- 		local s = '{ '
+-- 		for k,v in pairs(o) do
+-- 			if type(k) ~= 'number' then k = '"'..k..'"' end
+-- 			s = s .. '['..k..'] = ' .. dump(v) .. ','
+-- 		end
+-- 		return s .. '} '
+-- 	else
+-- 		return tostring(o)
+-- 	end
+-- end
+
+-- naughty.notify({ title = "Layout:", text = c.keyboard_layout, timeout = 10 })
+-- naughty.notify({ title = "Fake Layout:", text = stdout, timeout = 10 })
