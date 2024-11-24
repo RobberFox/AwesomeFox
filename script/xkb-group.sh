@@ -1,11 +1,7 @@
 #!/bin/bash
 
-TOGGLE=$HOME/.toggle
-
-if [ ! -e $TOGGLE ]; then
-    touch $TOGGLE
-	xkb-switch -s $1
-else
-    rm $TOGGLE
+if [ "$(xkb-switch)" = "$1" ]; then
 	xkb-switch -s $2
+else
+	xkb-switch -s $1
 fi
