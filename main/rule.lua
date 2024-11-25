@@ -72,14 +72,29 @@ awful.rules.rules = {
 	{ rule = { class = "krita" }, properties = { screen = 1, urgent = false, maximized = false, tag = "4-Drw" } },
 	{ rule = { class = "Zathura" }, properties = { screen = 1, urgent = false, maximized = false, tag = "5-Pdf" } },
 
-	{
-		rule_any = { class = { "Steam" } },
-		properties = {
-			titlebars_enabled = false,
-			floating = true,
-			border_width = 0,
-			border_color = 0,
-			size_hints_honor = false,
-		},
-	},
+	{ rule = { class = "PureRef" }, properties = { screen = 1, floating = true } },
+
+	-- {
+	-- 	rule_any = { class = "steam" },
+	-- 	properties = {
+	-- 		titlebars_enabled = false,
+	-- 		floating = true,
+	-- 		border_width = 0,
+	-- 		border_color = 0,
+	-- 		size_hints_honor = false,
+	-- 	},
+	-- },
+
+	-- {
+	-- 	rule_any = { class = "steam_app_410900" },
+	-- 	properties = {
+	-- 		titlebars_enabled = false,
+	-- 		maximized = true,
+	-- 		fullscreen = true,
+	-- 		floating = true,
+	-- 		border_width = 0,
+	-- 		border_color = 0,
+	-- 		size_hints_honor = false,
+	-- 	},
+	-- },
 }
