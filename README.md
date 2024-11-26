@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/b46ca6b7-af10-419d-a18b-53dfab41b637)
+![image](https://github.com/user-attachments/assets/eda16f6c-0eaf-41f2-a14a-2bfa05180833)
 >[!NOTE]
 >It's not recommended to blindly copy this config since it contains a `backlight.sh` script which requires adding privilege to users to edit `/sys/class/backlight` (see: https://wiki.archlinux.org/title/Backlight), keyboard layout switching hotkeys that depend on [xkb-switch](https://github.com/sergei-mironov/xkb-switch) and an `autostart.lua` that starts *my* programs/scripts.<br>
 >This config has been stripped off of xdesktop appmenu, titlebars and all code related to them.
@@ -43,7 +43,6 @@
 ├── rc.lua
 └── theme.lua
 ```
-
 ### Appearance
 Contains customization of the wibar and popup wibox.
 - Padding - auxillary widget to add spacing between other widgets (not used yet)
