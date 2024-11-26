@@ -1,5 +1,5 @@
 local theme_assets = require("beautiful.theme_assets")
-local vars = require("main.user-variable")
+local vars = require("main.user_variable")
 
 local dpi = vars.dpi
 local themes_path = vars.themes_path

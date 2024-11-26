@@ -5,7 +5,7 @@ local beautiful = require("beautiful")
 
 local theme = require("theme")
 
-local vars = require("main.user-variable")
+local vars = require("main.user_variable")
 local modkey = vars.modkey
 local dpi = vars.dpi
 
@@ -59,7 +59,7 @@ local taglist_buttons = gears.table.join(
 -- 	},
 -- 	id     = 'background_role',
 -- 	widget = wibox.container.background,
--- 
+--
 -- 	create_callback = function(self, c3, index, objects) --luacheck: no unused args
 -- 		self:get_children_by_id('index_role')[1].markup = '<b> '..index..' </b>'
 -- 	end,

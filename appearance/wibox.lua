@@ -7,6 +7,7 @@ local appearance = { -- my library
 	mytasklist = require("appearance.tasklist"),
 	mytraywidgets = require("appearance.tray"),
 	mypadding = require("appearance.padding"),
+	mypopup = require("appearance.layout_popup")
 }
 
 awful.screen.connect_for_each_screen(function(s)
@@ -14,6 +15,8 @@ awful.screen.connect_for_each_screen(function(s)
 
 	s.mypromptbox = awful.widget.prompt(s)
 	s.mylayoutbox = awful.widget.layoutbox(s)
+
+	s.mypopup = appearance.mypopup
 
 	s.mywibox = awful.wibar({ position = "top", screen = s, height = 24 })
 

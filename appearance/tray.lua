@@ -1,7 +1,7 @@
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 
-local vars = require("main.user-variable")
+local vars = require("main.user_variable")
 local awful = require("awful")
 local gears = require("gears")
 
@@ -40,13 +40,13 @@ function widgets.mykeyboardlayout(s)
 		widget = wibox.container.background
 	})
 
-	-- awesome.connect_signal("keyboard::layout", function(kbd_layout) -- WIP: NEED TO FIX THIS
-	-- 	if kbd_layout == 0 then
-	-- 		keyboardwiboxwidget.fg = beautiful.red
-	-- 	else
-	-- 		keyboardwiboxwidget.fg = beautiful.fg_focus
-	-- 	end
-	-- end)
+	awful.widget.keyboardlayout():connect_signal("widget::layout_changed", function()
+		if awesome.xkb_get_layout_group() == 0 then
+			keyboardwiboxwidget.fg = beautiful.red
+		else
+			keyboardwiboxwidget.fg = beautiful.green
+		end
+	end)
 
 	return keyboardwiboxwidget
 end

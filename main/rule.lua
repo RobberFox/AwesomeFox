@@ -4,7 +4,7 @@ local beautiful = require("beautiful")
 local clientkeys = require("key.clientkey")
 local clientbuttons = require("key.clientbutton")
 
-awful.rules.rules = {
+local rules = {
 	-- All clients will match this rule.
 	{
 		rule = { },
@@ -98,3 +98,5 @@ awful.rules.rules = {
 	-- 	},
 	-- },
 }
+
+return rules

@@ -4,7 +4,7 @@ local menubar = require("menubar")
 local naughty = require("naughty")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 
-local vars = require("main.user-variable")
+local vars = require("main.user_variable")
 
 local config_path = vars.config_path
 local terminal = vars.terminal
@@ -125,6 +125,11 @@ awful.key({ modkey }, "z", function()
 		s.mywibox.visible = not s.mywibox.visible
 	end
 end, {description = "hide wibar", group = "robberfox"}),
+awful.key({ modkey }, "c", function()
+	for s in screen do
+		s.mypopup.visible = not s.mypopup.visible
+	end
+end, {description = "hide keyboard layout popup", group = "robberfox"}),
 
 -- Laptop
 awful.key({ modkey }, ",", function()
@@ -154,7 +159,7 @@ awful.key({ modkey }, "q", function()
 end, {description = "Change layout group", group = "language"}),
 
 awful.key({ }, "#191", function()
-	awful.spawn.with_shell("echo 'switch' | "..config_path.."script/xkb-group.sh 'us(altgr-intl)' "..keyboard_layout)
+	awful.spawn.with_shell("echo 'switch' | "..config_path.."script/xkb_group.sh 'us(altgr-intl)' "..keyboard_layout)
 	-- awful.spawn.easy_async_with_shell("echo 'switch' | "..config_path.."script/xkb-group.sh 'us(altgr-intl)' "..keyboard_layout.." 2> /dev/null", function()
 	-- 	awesome.emit_signal("keyboard::layout", awesome.xkb_get_layout_group())
 	-- end)

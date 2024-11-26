@@ -1,5 +1,5 @@
 local awful = require("awful")
-local vars = require("main.user-variable")
+local vars = require("main.user_variable")
 
 local config_path = vars.config_path
 local home_path = vars.home_path
@@ -14,4 +14,4 @@ awful.spawn.once("zathura", {})
 -- Scripts
 awful.spawn.once(config_path.."script/amixer.sh")
 awful.spawn.once(config_path.."script/sensitivity.sh")
-awful.spawn.once(config_path.."script/set-xkb_layout.sh")
+awful.spawn.once(config_path.."script/set_xkb_layout.sh")
