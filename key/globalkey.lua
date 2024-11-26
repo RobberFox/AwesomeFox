@@ -22,12 +22,6 @@ local function shell_run()
 	}
 end
 
-local function spawn_here(cmd)
-	awful.spawn(cmd, {
-		tag = mouse.screen.selected_tag,
-	})
-end
-
 local keyboard_layout = "ru"
 
 local function brightness_emit(arg)
