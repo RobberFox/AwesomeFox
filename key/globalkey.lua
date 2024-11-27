@@ -46,14 +46,6 @@ local function volume_emit(arg)
 end
 volume_emit("+") -- Otherwise you don't see widget info until the first invocation
 
--- menubar.prompt_args {
--- 	exe_callback = spawn_here()
--- }
-
-local function menubar_run()
-	menubar.show()
-end
-
 local globalkeys = gears.table.join(tagkey,
 awful.key({ modkey, }, "s", hotkeys_popup.show_help, {description="show help", group="awesome"}),
 awful.key({ modkey, "Shift" }, "r", awesome.restart, {description = "reload awesome", group = "awesome"}),
@@ -108,7 +100,7 @@ awful.key({ modkey, "Control" }, "l", function() awful.tag.incncol(-1, nil, true
 
 -- Running
 awful.key({ modkey, }, "Return", function() awful.spawn(terminal, false) end, {description = "open a terminal", group = "5 run"}),
-awful.key({ modkey }, "p", function() menubar_run() end, {description = "show the menubar", group = "5 run"}),
+awful.key({ modkey }, "p", function() menubar.show(s) end, {description = "show the menubar", group = "5 run"}),
 awful.key({ modkey }, "r", function() awful.screen.focused().mypromptbox:run() end, {description = "run prompt", group = "5 run"}),
 awful.key({ modkey }, "x", shell_run, {description = "lua execute prompt", group = "5 run"}),
 

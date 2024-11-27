@@ -24,6 +24,7 @@ awful.rules.rules = rules
 
 require("main.signal")
 require("module.share_keyboard_layout")
+-- require("module.apprules")
 
 require("appearance.wibox")
 
