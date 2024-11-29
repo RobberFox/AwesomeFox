@@ -1,3 +1,5 @@
+#### Best guide on youtube: https://youtu.be/TwZLyybNpjo?feature=shared
+
 ![image](https://github.com/user-attachments/assets/eda16f6c-0eaf-41f2-a14a-2bfa05180833)
 >[!NOTE]
 >It's not recommended to blindly copy this config since it contains a `backlight.sh` script which requires adding privilege to users to edit `/sys/class/backlight` (see: https://wiki.archlinux.org/title/Backlight), keyboard layout switching hotkeys that depend on [xkb-switch](https://github.com/sergei-mironov/xkb-switch) and an `autostart.lua` that starts *my* programs/scripts.<br>
