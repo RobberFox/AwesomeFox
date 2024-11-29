@@ -22,10 +22,6 @@ awful.layout.layouts = layouts
 require("main.tag")
 awful.rules.rules = rules
 
-require("main.signal")
-require("module.share_keyboard_layout")
--- require("module.apprules")
-
 require("appearance.wibox")
 
 -- Set keys
@@ -35,10 +31,12 @@ local globalbuttons = require("key.globalbuttons")
 root.keys(globalkeys)
 root.buttons(globalbuttons)
 
+require("main.signal")
+require("module.share_keyboard_layout")
+-- require("module.apprules")
+
 -- Autostarting of apps always comes last
 require("module.autostart")
-
-
 
 -- Misc. debugging stuff
 -- function dump(o)

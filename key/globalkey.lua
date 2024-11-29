@@ -145,10 +145,7 @@ awful.key({ modkey }, "q", function()
 end, {description = "Change layout group", group = "language"}),
 
 awful.key({ }, "#191", function()
-	awful.spawn.with_shell("echo 'switch' | "..config_path.."script/xkb_group.sh 'us(altgr-intl)' "..keyboard_layout)
-	-- awful.spawn.easy_async_with_shell("echo 'switch' | "..config_path.."script/xkb-group.sh 'us(altgr-intl)' "..keyboard_layout.." 2> /dev/null", function()
-	-- 	awesome.emit_signal("keyboard::layout", awesome.xkb_get_layout_group())
-	-- end)
+	awful.spawn.with_shell(config_path.."script/xkb_group.sh 'us(altgr-intl)' "..keyboard_layout)
 end, {description = "Change layout", group = "language"})
 )
 
