@@ -66,8 +66,8 @@ end, {description = "go back", group = "tag"}),
 -- Window manipulation
 awful.key({ modkey, "Shift" }, "j", function() awful.client.swap.byidx( -1) end, {description = "swap with previous client", group = "1 window"}),
 awful.key({ modkey, "Shift" }, "k", function() awful.client.swap.byidx( 1) end, {description = "swap with next client", group = "1 window"}),
-awful.key({ modkey, }, "j", function() awful.client.focus.byidx( 1) end, {description = "focus next by index", group = "1 window"}),
-awful.key({ modkey, }, "k", function() awful.client.focus.byidx(-1) end, {description = "focus previous by index", group = "1 window"}),
+awful.key({ modkey, }, "k", function() awful.client.focus.byidx( 1) end, {description = "focus previous by index", group = "1 window"}),
+awful.key({ modkey, }, "j", function() awful.client.focus.byidx(-1) end, {description = "focus next by index", group = "1 window"}),
 
 awful.key({ modkey, }, "Tab", function()
 	awful.client.focus.history.previous()
@@ -92,7 +92,8 @@ end, {description = "restore minimized", group = "4 min/max"}),
 awful.key({ modkey, }, "l", function() awful.tag.incmwfact( 0.05) end, {description = "increase master width factor", group = "2 window - increment"}),
 awful.key({ modkey, }, "h", function() awful.tag.incmwfact(-0.05) end, {description = "decrease master width factor", group = "2 window - increment"}),
 awful.key({ modkey, }, "y", function() awful.screen.focused().selected_tag.master_width_factor = 1/3 end, {description = "master width factor: 1/3", group = "2 window - increment"}),
-awful.key({ modkey, }, "u", function() awful.screen.focused().selected_tag.master_width_factor = 0.65 end, {description = "master width factor: 0.65", group = "2 window - increment"}),
+awful.key({ modkey, }, "u", function() awful.screen.focused().selected_tag.master_width_factor = 0.5 end, {description = "master width factor: 1/3", group = "2 window - increment"}),
+awful.key({ modkey, }, "i", function() awful.screen.focused().selected_tag.master_width_factor = 0.65 end, {description = "master width factor: 0.65", group = "2 window - increment"}),
 awful.key({ modkey, "Shift" }, "h", function() awful.tag.incnmaster( 1, nil, true) end, {description = "increase the number of master clients", group = "2 window - increment"}),
 awful.key({ modkey, "Shift" }, "l", function() awful.tag.incnmaster(-1, nil, true) end, {description = "decrease the number of master clients", group = "2 window - increment"}),
 awful.key({ modkey, "Control" }, "h", function() awful.tag.incncol( 1, nil, true) end, {description = "increase the number of columns", group = "2 window - increment"}),
@@ -106,6 +107,7 @@ awful.key({ modkey }, "x", shell_run, {description = "lua execute prompt", group
 
 -- My own bindings
 awful.key({ modkey }, "a", function() awful.spawn.with_shell("flameshot gui") end, {description = "run flameshot", group = "robberfox"}),
+awful.key({ modkey, "Shift" }, "a", function() awful.spawn.with_shell("flameshot full") end, {description = "fullscreen flameshot", group = "robberfox"}),
 awful.key({ modkey }, "z", function()
 	for s in screen do
 		s.mywibox.visible = not s.mywibox.visible
