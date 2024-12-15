@@ -143,6 +143,8 @@ end, {description = "Laptop = backlight up", group = "laptop"}),
 -- Keyboard layout
 awful.key({ modkey }, "q", function()
 	keyboard_layout = (keyboard_layout == "ru") and "am" or "ru"
+	awful.spawn("xkb-switch -s "..keyboard_layout, false) -- `false` to prevent cursor being stuck in 'loading' state
+
 	naughty.notify({ title = "Layout Group:", text = "us,"..keyboard_layout, timeout = 3 })
 end, {description = "Change layout group", group = "language"}),
 
