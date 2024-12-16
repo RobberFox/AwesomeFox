@@ -8,6 +8,8 @@ local _M = {
 
 	dpi = beautiful.xresources.apply_dpi,
 
+	defaut_layout = "us(intl-unicode)",
+
 	terminal = "kitty",
 	editor = "nvim",
 

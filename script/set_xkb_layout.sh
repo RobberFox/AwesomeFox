@@ -1,2 +1,2 @@
 #!/bin/bash
-setxkbmap -layout us,ru,am -variant altgr-intl,,
+setxkbmap -model pc104 -layout us,ru,am -variant intl-unicode,,

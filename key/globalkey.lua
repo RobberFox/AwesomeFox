@@ -9,6 +9,7 @@ local vars = require("main.user_variable")
 local config_path = vars.config_path
 local terminal = vars.terminal
 local modkey = vars.modkey
+local default_layout = vars.defaut_layout
 
 local tagkey = require("key.tagkey")
 
@@ -149,7 +150,7 @@ awful.key({ modkey }, "q", function()
 end, {description = "Change layout group", group = "language"}),
 
 awful.key({ }, "#191", function()
-	awful.spawn.with_shell(config_path.."script/xkb_group.sh 'us(altgr-intl)' "..keyboard_layout)
+	awful.spawn.with_shell(config_path.."script/xkb_group.sh '"..vars.defaut_layout.."' "..keyboard_layout)
 end, {description = "Change layout", group = "language"})
 )
 
