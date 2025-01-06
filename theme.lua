@@ -7,7 +7,7 @@ local config_path = vars.config_path
 
 local theme = {}
 
-theme.font = "jetbrainsmono bold 10"
+theme.font = "jetbrainsmono bold 11"
 
 theme.bg_normal = "#1a1b26"
 theme.bg_focus = "#292e42"
