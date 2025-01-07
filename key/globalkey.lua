@@ -53,7 +53,7 @@ awful.key({ modkey, "Shift" }, "r", awesome.restart, {description = "reload awes
 awful.key({ modkey, "Shift" }, "q", awesome.quit, {description = "quit awesome", group = "awesome"}),
 
 -- Screens
-awful.key({ modkey, "Control" }, "j", function() awful.screen.focus_relative( 1) end, {description = "focus the next screen", group = "screen"}),
+awful.key({ modkey, "Control" }, "j", function() awful.screen.focus_relative(1) end, {description = "focus the next screen", group = "screen"}),
 awful.key({ modkey, "Control" }, "k", function() awful.screen.focus_relative(-1) end, {description = "focus the previous screen", group = "screen"}),
 
 -- Tag browsing
@@ -65,9 +65,9 @@ awful.key({ modkey, }, "Escape", function()
 end, {description = "go back", group = "tag"}),
 
 -- Window manipulation
-awful.key({ modkey, "Shift" }, "j", function() awful.client.swap.byidx( -1) end, {description = "swap with previous client", group = "1 window"}),
-awful.key({ modkey, "Shift" }, "k", function() awful.client.swap.byidx( 1) end, {description = "swap with next client", group = "1 window"}),
-awful.key({ modkey, }, "k", function() awful.client.focus.byidx( 1) end, {description = "focus previous by index", group = "1 window"}),
+awful.key({ modkey, "Shift" }, "j", function() awful.client.swap.byidx(-1) end, {description = "swap with previous client", group = "1 window"}),
+awful.key({ modkey, "Shift" }, "k", function() awful.client.swap.byidx(1) end, {description = "swap with next client", group = "1 window"}),
+awful.key({ modkey, }, "k", function() awful.client.focus.byidx(1) end, {description = "focus previous by index", group = "1 window"}),
 awful.key({ modkey, }, "j", function() awful.client.focus.byidx(-1) end, {description = "focus next by index", group = "1 window"}),
 
 awful.key({ modkey, }, "Tab", function()
@@ -90,14 +90,14 @@ awful.key({ modkey, "Control" }, "n", function()
 end, {description = "restore minimized", group = "4 min/max"}),
 
 -- Window manipulation with incrementation
-awful.key({ modkey, }, "l", function() awful.tag.incmwfact( 0.05) end, {description = "increase master width factor", group = "2 window - increment"}),
+awful.key({ modkey, }, "l", function() awful.tag.incmwfact(0.05) end, {description = "increase master width factor", group = "2 window - increment"}),
 awful.key({ modkey, }, "h", function() awful.tag.incmwfact(-0.05) end, {description = "decrease master width factor", group = "2 window - increment"}),
 awful.key({ modkey, }, "y", function() awful.screen.focused().selected_tag.master_width_factor = 1/3 end, {description = "master width factor: 1/3", group = "2 window - increment"}),
 awful.key({ modkey, }, "u", function() awful.screen.focused().selected_tag.master_width_factor = 0.5 end, {description = "master width factor: 1/3", group = "2 window - increment"}),
 awful.key({ modkey, }, "i", function() awful.screen.focused().selected_tag.master_width_factor = 0.65 end, {description = "master width factor: 0.65", group = "2 window - increment"}),
-awful.key({ modkey, "Shift" }, "h", function() awful.tag.incnmaster( 1, nil, true) end, {description = "increase the number of master clients", group = "2 window - increment"}),
+awful.key({ modkey, "Shift" }, "h", function() awful.tag.incnmaster(1, nil, true) end, {description = "increase the number of master clients", group = "2 window - increment"}),
 awful.key({ modkey, "Shift" }, "l", function() awful.tag.incnmaster(-1, nil, true) end, {description = "decrease the number of master clients", group = "2 window - increment"}),
-awful.key({ modkey, "Control" }, "h", function() awful.tag.incncol( 1, nil, true) end, {description = "increase the number of columns", group = "2 window - increment"}),
+awful.key({ modkey, "Control" }, "h", function() awful.tag.incncol(1, nil, true) end, {description = "increase the number of columns", group = "2 window - increment"}),
 awful.key({ modkey, "Control" }, "l", function() awful.tag.incncol(-1, nil, true) end, {description = "decrease the number of columns", group = "2 window - increment"}),
 
 -- Running
