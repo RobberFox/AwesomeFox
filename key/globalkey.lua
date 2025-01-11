@@ -107,8 +107,9 @@ awful.key({ modkey }, "r", function() awful.screen.focused().mypromptbox:run() e
 awful.key({ modkey }, "x", shell_run, {description = "lua execute prompt", group = "5 run"}),
 
 -- My own bindings
-awful.key({ modkey }, "a", function() awful.spawn.with_shell("flameshot gui") end, {description = "run flameshot", group = "robberfox"}),
-awful.key({ modkey, "Shift" }, "a", function() awful.spawn.with_shell("flameshot full") end, {description = "fullscreen flameshot", group = "robberfox"}),
+awful.key({ modkey }, "a", function() awful.spawn.with_shell("flameshot gui", false) end, {description = "run flameshot", group = "robberfox"}),
+awful.key({ modkey, "Shift" }, "a", function() awful.spawn.with_shell("flameshot full", false) end, {description = "fullscreen flameshot", group = "robberfox"}),
+awful.key({ modkey }, "e", function() awful.spawn.with_shell("thunar", false) end, {description = "thunar filemanager", group = "robberfox"}),
 awful.key({ modkey }, "z", function()
 	for s in screen do
 		s.mywibox.visible = not s.mywibox.visible
