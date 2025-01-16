@@ -68,7 +68,7 @@ local rules = {
 
 	--{ rule = { class = "kitty" }, properties = { screen = 1, urgent = false, maximized = false, tag = "1-Dev" } },
 	{ rule = { class = "obsidian" }, properties = { screen = 1, urgent = false, maximized = false, tag = "2-Obs" } },
-	{ rule = { class = "firefox" }, properties = { screen = 1, urgent = false, maximized = false, tag = "3-Ffx" } },
+	--{ rule = { class = "firefox" }, properties = { screen = 1, urgent = false, maximized = false, tag = "3-Ffx" } },
 	{ rule = { class = "krita" }, properties = { screen = 1, urgent = false, maximized = false, tag = "4-Drw" } },
 	{ rule = { class = "Zathura" }, properties = { screen = 1, urgent = false, maximized = false, tag = "5-Pdf" } },
 

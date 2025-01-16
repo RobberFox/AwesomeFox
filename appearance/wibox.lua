@@ -36,8 +36,18 @@ awful.screen.connect_for_each_screen(function(s)
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
 
+			--wibox.container.margin(wibox.widget {
+			--	image  = "/home/robert/dotsFox/AwesomeFox/image/keyboard.png",
+			--	resize = true,
+			--	widget = wibox.widget.imagebox
+			--}, 2, 2, 2, 2),
 			appearance.mytraywidgets.mykeyboardlayout(s),
 			appearance.mytraywidgets.mybrightness(s),
+			--wibox.container.margin(wibox.widget {
+			--	image  = "/home/robert/dotsFox/AwesomeFox/image/speaker.png",
+			--	resize = true,
+			--	widget = wibox.widget.imagebox
+			--}, 2, 2, 2, 2),
 			appearance.mytraywidgets.myvolume(s),
 			appearance.mytraywidgets.mybattery(s),
 			appearance.mytraywidgets.mytextclock(s),
