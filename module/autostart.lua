@@ -19,7 +19,7 @@ awful.spawn.once("firefox", { screen = 1, urgent = false, maximized = false, tag
 --awful.spawn.once("zathura", { screen = 1, urgent = false, maximized = false, tag = "5-Pdf" })
 
 -- Scripts
+awful.spawn.once(config_path.."script/set_xkb_layout.sh")
 awful.spawn.once(config_path.."script/amixer.sh")
 awful.spawn.once(config_path.."script/sensitivity.sh")
 awful.spawn.once(config_path.."script/screen.sh")
-awful.spawn.once(config_path.."script/set_xkb_layout.sh")

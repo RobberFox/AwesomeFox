@@ -38,15 +38,15 @@ for i = 1, 9 do
 				client.focus:toggle_tag(tag)
 			end
 
-			for k = 1, 9, 1 do
-				if first_tag == tags[k] then
-					if k < i then
-						awful.client.setmaster(client.focus)
-					else
-						awful.client.setslave(client.focus)
-					end
-				end
-			end
+			--for k = 1, 9, 1 do
+			--	if first_tag == tags[k] then
+			--		if k < i then
+			--			awful.client.setmaster(client.focus)
+			--		else
+			--			awful.client.setslave(client.focus)
+			--		end
+			--	end
+			--end
 
 		end
 	end, {description = "toggle on tag #" .. i, group = "numerated"}),
