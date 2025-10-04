@@ -151,7 +151,7 @@ awful.key({ modkey }, "q", function()
 end, {description = "Change layout group", group = "language"}),
 
 awful.key({ }, "#191", function()
-	awful.spawn.with_shell(config_path.."script/xkb_group.sh '"..vars.defaut_layout.."' "..keyboard_layout)
+	awful.spawn(config_path.."script/xkb_group.sh '"..vars.defaut_layout.."' "..keyboard_layout, false)
 end, {description = "Change layout", group = "language"})
 )
 
