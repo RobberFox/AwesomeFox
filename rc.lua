@@ -1,8 +1,12 @@
 pcall(require, "luarocks.loader")
+local gears = require("gears")
 local awful = require("awful")
-local beautiful = require("beautiful")
 
 require("awful.autofocus")
+
+local wibox = require("wibox")
+local beautiful = require("beautiful")
+local ruled = require("ruled")
 
 -- Theme
 local vars = require("main.user_variable")
@@ -15,25 +19,44 @@ beautiful.maximized_hide_border = true
 require("main.error")
 
 local layouts = require("main.layout")
-local rules = require("main.rule")
+tag.connect_signal("request::default_layouts", function()
+	awful.layout.append_default_layouts(layouts)
+end)
 
--- Order matters: it should follow that of the default rc.lua config
-awful.layout.layouts = layouts
 require("main.tag")
-awful.rules.rules = rules
 
+-- Ricing
+require("appearance.wallpaper")
 require("appearance.wibox")
 
--- Set keys
+-- Keybindings
+local globalbuttons = require("key.globalbutton")
 local globalkeys = require("key.globalkey")
-local globalbuttons = require("key.globalbuttons")
 
-root.keys(globalkeys)
-root.buttons(globalbuttons)
+awful.keyboard.append_global_keybindings({ globalkeys })
+awful.mouse.append_global_mousebindings({ globalbuttons })
 
-require("main.signal")
+local clientbuttons = require("key.clientbutton")
+local clientkeys = require("key.clientkey")
+
+client.connect_signal("request::default_mousebindings", function()
+	awful.mouse.append_client_mousebindings({ clientbuttons })
+end)
+client.connect_signal("request::default_keybindings", function()
+	awful.keyboard.append_client_keybindings({ clientkeys })
+end)
+
+-- Unsorted
+local rules = require("main.rules")
+ruled.client.connect_signal("request::rules", function()
+	for _, rule in ipairs(rules) do
+		ruled.client.append_rule(rule)
+	end
+end)
+
+require("main.notification")
+require("module.apprules")
 require("module.share_keyboard_layout")
--- require("module.apprules")
 
 -- Autostarting of apps always comes last
 require("module.autostart")

@@ -2,7 +2,6 @@ local awful = require("awful")
 local wibox = require("wibox")
 
 local appearance = { -- my library
-	set_wallpaper = require("appearance.wallpaper"),
 	mytaglist = require("appearance.taglist"),
 	mytasklist = require("appearance.tasklist"),
 	mytraywidgets = require("appearance.tray"),
@@ -11,8 +10,6 @@ local appearance = { -- my library
 }
 
 awful.screen.connect_for_each_screen(function(s)
-	appearance.set_wallpaper(s)
-
 	s.mypromptbox = awful.widget.prompt(s)
 	s.mylayoutbox = awful.widget.layoutbox(s)
 

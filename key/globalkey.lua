@@ -11,7 +11,7 @@ local terminal = vars.terminal
 local modkey = vars.modkey
 local default_layout = vars.defaut_layout
 
-local tagkey = require("key.tagkey")
+local tagkeys = require("key.tagkey")
 
 -- TODO: Extract into a separate file
 local function shell_run()
@@ -47,7 +47,7 @@ local function volume_emit(arg)
 end
 volume_emit("+") -- Otherwise you don't see widget info until the first invocation
 
-local globalkeys = gears.table.join(tagkey,
+local globalkeys = gears.table.join(tagkeys,
 awful.key({ modkey, }, "s", hotkeys_popup.show_help, {description="show help", group="awesome"}),
 awful.key({ modkey, "Shift" }, "r", awesome.restart, {description = "reload awesome", group = "awesome"}),
 awful.key({ modkey, "Shift" }, "q", awesome.quit, {description = "quit awesome", group = "awesome"}),
@@ -55,14 +55,6 @@ awful.key({ modkey, "Shift" }, "q", awesome.quit, {description = "quit awesome",
 -- Screens
 awful.key({ modkey, "Control" }, "j", function() awful.screen.focus_relative(1) end, {description = "focus the next screen", group = "screen"}),
 awful.key({ modkey, "Control" }, "k", function() awful.screen.focus_relative(-1) end, {description = "focus the previous screen", group = "screen"}),
-
--- Tag browsing
-awful.key({ modkey, }, "Left", awful.tag.viewprev, {description = "view previous", group = "tag"}),
-awful.key({ modkey, }, "Right", awful.tag.viewnext, {description = "view next", group = "tag"}),
-awful.key({ modkey, }, "Escape", function()
-	awful.tag.history.restore()
-	client.focus = awful.client.getmaster()
-end, {description = "go back", group = "tag"}),
 
 -- Window manipulation
 awful.key({ modkey, "Shift" }, "j", function() awful.client.swap.byidx(-1) end, {description = "swap with previous client", group = "1 window"}),

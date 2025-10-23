@@ -31,5 +31,3 @@ for _, name in ipairs(names) do
 		end
 	end)
 end
-
-
