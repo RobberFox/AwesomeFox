@@ -2,7 +2,7 @@ local awful = require("awful")
 local gears = require("gears")
 local menubar = require("menubar")
 local naughty = require("naughty")
-local hotkeys_popup = require("awful.hotkeys_popup").widget
+local hotkeys_popup = require("awful.hotkeys_popup")
 
 local vars = require("main.user_variable")
 
@@ -48,7 +48,7 @@ end
 volume_emit("+") -- Otherwise you don't see widget info until the first invocation
 
 local globalkeys = gears.table.join(tagkeys,
-awful.key({ modkey, }, "s", hotkeys_popup.show_help, {description="show help", group="awesome"}),
+--awful.key({ modkey, }, "s", function() hotkeys_popup.show_help() end, {description="show help", group="awesome"}),
 awful.key({ modkey, "Shift" }, "r", awesome.restart, {description = "reload awesome", group = "awesome"}),
 awful.key({ modkey, "Shift" }, "q", awesome.quit, {description = "quit awesome", group = "awesome"}),
 
