@@ -38,6 +38,22 @@ local rules = {
 	},
 
 	{
+		rule = { name = "Krita - Edit Text — Krita" },
+		properties = {
+			floating = true,
+			width = 640,
+			height = 480,
+		},
+	},
+
+	{
+		rule = { name = "PureRef" },
+		properties = {
+			floating = true,
+		},
+	},
+
+	{
 		rule = { class = "kitty" },
 		properties = { screen = 1, tag = "1-Dev" }
 	},
@@ -49,7 +65,7 @@ local rules = {
 		rule = { class = "firefox-esr" },
 		properties = { screen = 1, tag = "3-Ffx" }
 	},
-	 {
+	{
 		rule = { class = "krita" },
 		properties = { screen = 1, tag = "4-Drw" }
 	},
