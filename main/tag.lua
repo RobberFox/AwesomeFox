@@ -21,6 +21,13 @@ for _, name in ipairs(names) do
 				master_width_factor = 0.5,
 				screen = s,
 			})
+		elseif name == "5-Pdf" then
+			awful.tag.add(name, {
+				layout = awful.layout.layouts[1],
+				column_count = 3,
+				master_width_factor = 0.5,
+				screen = s,
+			})
 		else
 			awful.tag.add(name, {
 				layout = awful.layout.layouts[1],

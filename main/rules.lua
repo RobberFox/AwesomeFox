@@ -50,6 +50,7 @@ local rules = {
 		rule = { name = "PureRef" },
 		properties = {
 			floating = true,
+			ontop = true,
 		},
 	},
 
